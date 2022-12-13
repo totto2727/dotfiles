@@ -1,0 +1,6 @@
+.ssh/known_hosts*
+.ssh/keys/**
+.DS_Store
+.history
+.git
+node_modules

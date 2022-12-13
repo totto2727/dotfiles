@@ -1,0 +1,33 @@
+[username]
+disabled = false
+style_user = "white bold"
+style_root = "red bold"
+format = "[$user]($style):"
+show_always = true
+
+[hostname]
+ssh_symbol = ""
+
+[directory]
+home_symbol = "~"
+truncation_length = 100
+truncation_symbol = "…/"
+truncate_to_repo = false
+repo_root_style = "purple bold"
+use_logical_path = false
+
+[shell]
+disabled = false
+fish_indicator = ""
+bash_indicator = "_"
+zsh_indicator = "_"
+unknown_indicator = "mystery shell"
+style = "cyan bold"
+
+[package]
+disabled = true
+
+[time]
+disabled = false
+format = " [$time]($style) "
+time_format = "%R"

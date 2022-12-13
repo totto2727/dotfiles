@@ -1,0 +1,4 @@
+[keys.normal]
+A-s = ":w"
+[keys.insert]
+j = { j = "normal_mode" } # Maps `jk` to exit insert mode

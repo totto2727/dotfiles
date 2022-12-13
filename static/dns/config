@@ -1,0 +1,7 @@
+# CA="letsencrypt-test"
+CA="letsencrypt"
+CHALLENGETYPE="dns-01"
+BASEDIR="${HOME}/.dehydrated"
+CONTACT_EMAIL=kaihatu.totto2727@gmail.com
+HOOK="${BASEDIR}/hook.sh"
+HOOK_CHAIN="no"

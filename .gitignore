@@ -1,0 +1,13 @@
+*.token
+
+fish_variables
+.config/fish/functions
+.config/fish/conf.d
+.config/fish/completions
+.config/fish/themes
+
+.config/helix/runtime
+
+.ssh/agent
+.ssh/keys
+.ssh/known_hosts

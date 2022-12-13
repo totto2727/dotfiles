@@ -1,0 +1,2 @@
+snippet state
+	const [${1:name}, set${1/.*/\=v:lua.upper_first(submatch(0))/}] = useState(${2:defaultValue})

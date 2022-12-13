@@ -1,0 +1,66 @@
+snippet repository_trait
+	use crate::domain::Result;
+	use async_trait::async_trait;
+	use derive_getters::Getters;
+
+	#[cfg(test)]
+	use mockall::automock;
+
+	impl<'a, Repository: 'a> $1Repository<'a, Repository> {
+		pub fn new(repository: &'a Repository) -> Self {
+			${1/.*/\=v:lua.pascal(submatch(0))/}Repository { repository }
+		}
+	}
+
+	#[cfg_attr(test, automock)]
+	#[async_trait]
+	pub trait ${1/.*/\=v:lua.pascal(submatch(0))/}RepositoryTrait: Send + Sync {
+		$2
+	}
+
+
+snippet repository_impl_sea_orm
+	use super::$1_repository::{${1/.*/\=v:lua.pascal(submatch(0))/}Repository, ${1/.*/\=v:lua.pascal(submatch(0))/}RepositoryTrait};
+	use crate::domain::Result;
+	use async_trait::async_trait;
+	use derive_getters::Getters;
+	use sea_orm::prelude::*;
+
+	#[derive(Getters)]
+	pub struct ${1/.*/\=v:lua.pascal(submatch(0))/}Repository<'a> {
+		connection: &'a DatabaseConnection,
+	}
+
+	impl<'a> ${1/.*/\=v:lua.pascal(submatch(0))/}Repository<'a> {
+		pub fn new(connection: &'a DatabaseConnection) -> Self {
+			Self { connection }
+		}
+	}
+
+	#[async_trait]
+	impl<'a> ${1/.*/\=v:lua.pascal(submatch(0))/}RepositoryTrait for ${1/.*/\=v:lua.pascal(submatch(0))/}Repository<'a> {
+			$2
+	}
+
+snippet model
+	use derive_getters::Getters;
+
+	#[derive(Debug, Clone, PartialEq, Eq, Hash, Getters)]
+	pub struct $1 {
+		$2
+	}
+
+	impl ${1/.*/\=v:lua.pascal(submatch(0))/} {
+		pub fn new<S>($2) -> Self {
+			Self {
+				${2/.*/\=v:lua.rust_type_to_struct_shorthand(submatch(0))/}
+			}
+		}
+	}
+
+snippet from
+	impl From<String> for Tag {
+			fn from(string: String) -> Self {
+					Self::new(string)
+			}
+	}

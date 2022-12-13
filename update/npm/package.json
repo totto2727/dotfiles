@@ -1,0 +1,33 @@
+{
+  "name": "lib",
+  "dependencies": {
+    "corepack": {
+      "version": "0.15.2",
+      "overridden": false
+    },
+    "http-server": {
+      "version": "14.1.1",
+      "overridden": false
+    },
+    "npm-check-updates": {
+      "version": "16.5.6",
+      "overridden": false
+    },
+    "npm": {
+      "version": "9.2.0",
+      "overridden": false
+    },
+    "textlint-rule-preset-ja-technical-writing": {
+      "version": "7.0.0",
+      "overridden": false
+    },
+    "textlint-rule-preset-jtf-style": {
+      "version": "2.3.13",
+      "overridden": false
+    },
+    "textlint-rule-prh": {
+      "version": "5.3.0",
+      "overridden": false
+    }
+  }
+}

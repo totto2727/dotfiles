@@ -1,0 +1,29 @@
+#!/bin/bash
+OS=$(uname)
+
+# clipbooard
+if type pbcopy >/dev/null 2>&1; then
+	alias CLIPBOARD_COMMAND='pbcopy'
+elif type xsel >/dev/null 2>&1; then
+	alias CLIPBOARD_COMMAND='xsel --input --clipboard'
+fi
+
+# asdf
+test -e "$HOME"/.asdf/asdf.sh && . "$HOME"/.asdf/asdf.sh
+
+# Editor
+if type nvim >/dev/null 2>&1; then
+	EDITOR="$(which nvim)"
+  alias vi="nvim"
+  alias vim="nvim"
+else
+	EDITOR="$(which vi)"
+  alias nvim="vi"
+fi
+export EDITOR
+
+test -d "$HOME"/.cargo && . "$HOME/.cargo/env"
+
+if $BREW_INSTALLED && test -e "$(brew --prefix)"/etc/profile.d/z.sh; then
+	. "$(brew --prefix)"/etc/profile.d/z.sh
+fi

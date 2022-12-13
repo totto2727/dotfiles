@@ -1,0 +1,2 @@
+dev.totto.page *.dev.totto.page
+quic.totto.page *.quic.totto.page
