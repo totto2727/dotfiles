@@ -7,18 +7,23 @@ fi
 
 # Env
 
-# Rust
+## Rust
 test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
 
-# asdf
+## NodeJS
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## asdf
 test -e "$HOME"/.asdf/asdf.sh && . "$HOME"/.asdf/asdf.sh
 test -e "$HOME"/.asdf/completions/asdf.bash && . "$HOME"/.asdf/completions/asdf.bash
 
-# Shell
+## Shell
 SHELL=$(which bash)
 export SHELL
 
-# Editor
+## Editor
 if type nvim >/dev/null 2>&1; then
 	EDITOR="$(which nvim)"
 	alias vi="nvim"
@@ -29,22 +34,7 @@ else
 fi
 export EDITOR
 
-# Starship
-type starship >/dev/null 2>&1 && eval "$(starship init bash)"
-
-# Z
-if type zoxide >/dev/null 2>&1; then
-	eval "$(zoxide init bash)"
-fi
-
-# clipbooard
-if type pbcopy >/dev/null 2>&1; then
-	alias CLIPBOARD_COMMAND='pbcopy'
-elif type xsel >/dev/null 2>&1; then
-	alias CLIPBOARD_COMMAND='xsel --input --clipboard'
-fi
-
-# SSH Agent
+## SSH Agent
 agent="$HOME/.ssh/agent"
 if [ -S "$SSH_AUTH_SOCK" ]; then
 	case $SSH_AUTH_SOCK in
@@ -56,6 +46,23 @@ elif [ -S "$agent" ]; then
 	export SSH_AUTH_SOCK=$agent
 else
 	echo "no ssh-agent"
+fi
+
+# init
+## Starship
+type starship >/dev/null 2>&1 && eval "$(starship init bash)"
+
+## Z
+if type zoxide >/dev/null 2>&1; then
+	eval "$(zoxide init bash)"
+fi
+
+# alias
+# clipbooard
+if type pbcopy >/dev/null 2>&1; then
+	alias CLIPBOARD_COMMAND='pbcopy'
+elif type xsel >/dev/null 2>&1; then
+	alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 fi
 
 alias glances='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro --pid host --network host -it nicolargo/glances:latest-full'
