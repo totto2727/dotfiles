@@ -1,4 +1,18 @@
+theme = "nord"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "diagnostics"]
+center = ["file-name"]
+right = ["selections", "file-type", "file-encoding", "position-percentage", "position"]
+
 [keys.normal]
 A-s = ":w"
+
 [keys.insert]
 j = { j = "normal_mode" } # Maps `jk` to exit insert mode
+C-space = "completion"

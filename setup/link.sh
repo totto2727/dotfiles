@@ -58,6 +58,9 @@ make_link ~/dotfiles/.bashrc ~/.bashrc
 ### zsh
 make_link ~/dotfiles/.zshrc ~/.zshrc
 
+### asdf
+make_link ~/dotfiles/.tool-versions ~/.tool-versions
+
 ### textlint
 make_link ~/dotfiles/.textlintrc ~/.textlintrc
 
