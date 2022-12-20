@@ -22,6 +22,8 @@ test -e "$HOME"/.asdf/completions/asdf.bash && . "$HOME"/.asdf/completions/asdf.
 ## Shell
 SHELL=$(which bash)
 export SHELL
+COLORTERM=truecolor
+export COLORTERM
 
 ## Editor
 if type nvim >/dev/null 2>&1; then
