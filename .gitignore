@@ -6,8 +6,6 @@ fish_variables
 .config/fish/completions
 .config/fish/themes
 
-.config/helix/runtime
-
 .ssh/agent
 .ssh/keys
 .ssh/known_hosts
