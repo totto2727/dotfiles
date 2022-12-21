@@ -29,6 +29,7 @@ if ! test -e ~/.ssh/config; then
 	cd || exit
 	sh ~/dotfiles/setup/ssh.sh
 fi
+
 ### Git
 cd || exit
 test -d ~/git_config || git clone git@github.com:totto2727/git_config.git
@@ -60,6 +61,9 @@ make_link ~/dotfiles/.zshrc ~/.zshrc
 
 ### asdf
 make_link ~/dotfiles/.tool-versions ~/.tool-versions
+
+#### asdf-golang
+make_link ~/dotfiles/.default-golang-pkgs ~/.default-golang-pkgs
 
 ### textlint
 make_link ~/dotfiles/.textlintrc ~/.textlintrc

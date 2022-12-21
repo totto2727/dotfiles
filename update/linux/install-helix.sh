@@ -1,5 +1,8 @@
 #!/bin/bash
-type cargo >/dev/null 2>&1 && cargo install tree-sitter-cli || echo 'require rust' && exit
+type tree-sitter >/dev/null 2>&1 || cargo install tree-sitter-cli || (echo 'require rust' && exit)
+
+echo installed cargo and tree-sitter
+
 cd || exit
 git clone https://github.com/helix-editor/helix
 cd ~/helix || exit

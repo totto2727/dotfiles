@@ -1,11 +1,15 @@
 #!/bin/bash
 sh ./preinstall.sh
 
+sh ./link.sh
+
 sh ./brew.sh
 
-sh ./asdf.sh
+sh ../update/asdf/update.sh
 
-sh ./link.sh
+sh ../update/install.sh
+
+sh ../update/theme.sh
 
 echo "fish ./fish.fish"
 

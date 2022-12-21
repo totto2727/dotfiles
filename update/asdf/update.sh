@@ -1,11 +1,8 @@
 #!/bin/bash
-rm ~/.tool-versions
-ln -v -s ~/dotfiles/.tool-versions ~/.tool-versions
-
 packages=(
 	nodejs
 	python
-	neovim)
+	golang)
 
 is_installed() {
 	local i
@@ -29,6 +26,4 @@ done
 
 asdf plugin update --all
 
-for package in "${packages[@]}"; do
-	asdf install "$package"
-done
+asdf install
