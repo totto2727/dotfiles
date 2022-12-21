@@ -29,6 +29,7 @@ if ! test -e ~/.ssh/config; then
 	cd || exit
 	sh ~/dotfiles/setup/ssh.sh
 fi
+
 ### Git
 cd || exit
 test -d ~/git_config || git clone git@github.com:totto2727/git_config.git

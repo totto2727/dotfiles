@@ -3,7 +3,7 @@ sh ./preinstall.sh
 
 sh ./brew.sh
 
-sh ./asdf.sh
+sh ../update/asdf.sh
 
 sh ./link.sh
 
