@@ -1,7 +1,6 @@
 function update
     echo -e "\nasdf"
-    asdf plugin update --all
-    asdf install
+    sh ~/dotfiles/update/asdf.sh
 
     echo -e "\nbrew"
     brew update
@@ -9,12 +8,7 @@ function update
     sh ~/dotfiles/update/brew/brew-bundle.sh
 
     echo -e "\nTheme"
-    curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_day.fish >~/dotfiles/.config/fish/user_colors/tokyonight_day.fish
-    curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_night.fish >~/dotfiles/.config/fish/user_colors/tokyonight_night.fish
-    curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_storm.fish >~/dotfiles/.config/fish/user_colors/tokyonight_storm.fish
-    curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_moon.fish >~/dotfiles/.config/fish/user_colors/tokyonight_moon.fish
-
-    curl https://raw.githubusercontent.com/aereal/vim-colors-japanesque/master/colors/japanesque.vim >~/dotfiles/.config/nvim/colors/japanesque.vim
+    sh ~/dotfiles/update/theme.sh
 
     echo -e "\nfisher"
     fisher update
@@ -23,14 +17,12 @@ function update
     echo -e "\nfish_update_completions"
     fish_update_completions
 
-    echo -e "\npip"
-    pip install --upgrade pip
-    pip install --upgrade -r ~/dotfiles/update/pip/requirements.txt
-    conda update --all
+    echo -e "\npython"
+    sh ~/dotfiles/update/python/update.sh
 
     # 以下手動更新
     echo -e "\nnpm global varsion"
-    echo -e "$(npx npm-check-updates -g) && sh ~/dotfiles/update/npm/update-npm-global.sh"
+    sh ~/dotfiles/update/npm/update.sh
 
     echo -e "\nvi -c PackerUpdate -c TSUpdate"
 end
