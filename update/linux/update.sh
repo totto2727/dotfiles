@@ -1,2 +1,4 @@
 sudo apt update && sudo apt upgrade
-sh ~/dotfiles/update/cargo/update.sh
+sh ~/dotfiles/update/rust/update.sh
+
+sh update-nvim.sh

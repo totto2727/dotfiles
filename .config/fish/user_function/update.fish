@@ -5,7 +5,7 @@ function update
     echo -e "\nbrew"
     brew update
     brew upgrade
-    sh ~/dotfiles/update/brew/brew-bundle.sh
+    sh ~/dotfiles/update/brew/update-list.sh
 
     echo -e "\nTheme"
     sh ~/dotfiles/update/theme.sh
