@@ -1,2 +1,3 @@
 dev.totto.page *.dev.totto.page
+dev-oracle.totto.page *.dev-oracle.totto.page
 quic.totto.page *.quic.totto.page
