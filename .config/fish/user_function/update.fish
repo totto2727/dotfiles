@@ -1,12 +1,14 @@
 function update
     echo -e "\nasdf"
     asdf plugin update --all
+    asdf install
 
     echo -e "\nbrew"
     brew update
     brew upgrade
     sh ~/dotfiles/update/brew/brew-bundle.sh
 
+    echo -e "\nTheme"
     curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_day.fish >~/dotfiles/.config/fish/user_colors/tokyonight_day.fish
     curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_night.fish >~/dotfiles/.config/fish/user_colors/tokyonight_night.fish
     curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_storm.fish >~/dotfiles/.config/fish/user_colors/tokyonight_storm.fish
@@ -23,8 +25,8 @@ function update
 
     echo -e "\npip"
     pip install --upgrade pip
-    pip list -o | tail -n +3 | awk '{ print $1 }' | xargs pip install -U
-    sh ~/dotfiles/update/pip/update-pip-global.sh
+    pip install --upgrade -r ~/dotfiles/update/pip/requirements.txt
+    conda update --all
 
     # 以下手動更新
     echo -e "\nnpm global varsion"
