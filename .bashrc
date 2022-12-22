@@ -7,9 +7,6 @@ fi
 
 # Env
 
-## Rust
-test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
-
 ## asdf
 test -e "$HOME"/.asdf/asdf.sh && . "$HOME"/.asdf/asdf.sh
 test -e "$HOME"/.asdf/completions/asdf.bash && . "$HOME"/.asdf/completions/asdf.bash

@@ -14,4 +14,4 @@ if [ "$BASH_VERSION" != "" ]; then
 		. "$HOME/.bashrc"
 	fi
 fi
-. "$HOME/.cargo/env"
+test -e "HOME"/.cargo/env && . "$HOME/.cargo/env"
