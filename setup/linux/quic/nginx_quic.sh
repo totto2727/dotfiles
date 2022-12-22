@@ -14,7 +14,7 @@ make -j"$(nproc)"
 make install_sw
 cd ../
 
-# Build Nginx
+# Build Nginx-Quic
 hg clone -b quic https://hg.nginx.org/nginx-quic
 cd nginx-quic || exit
 ./auto/configure \
@@ -30,5 +30,7 @@ cd nginx-quic || exit
 make -j"$(nproc)"
 make install
 
-ln -s -f ~/dotfiles/static/quic/nginx.conf ~/quic/nginx-quic/build/conf/nginx.conf
+ln -s -f ~/dotfiles/static/quic/qnginx.conf ~/quic/nginx-quic/build/conf/nginx.conf
+rm -r ~/quic/nginx-quic/build/html
+ln -s -f ~/dotfiles/static/quic/html ~/quic/nginx-quic/build/html
 sudo ln -s -f ~/dotfiles/static/quic/qnginx.service /lib/systemd/system/qnginx.service
