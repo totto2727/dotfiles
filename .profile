@@ -7,6 +7,10 @@ if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
+# rust
+test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
+
+# Last
 # if running bash
 if [ "$BASH_VERSION" != "" ]; then
 	# include .bashrc if it exists
@@ -14,4 +18,3 @@ if [ "$BASH_VERSION" != "" ]; then
 		. "$HOME/.bashrc"
 	fi
 fi
-test -e "HOME"/.cargo/env && . "$HOME/.cargo/env"
