@@ -9,3 +9,5 @@ sudo ln -s -f -v ~/dotfiles/static/nfs/exports /etc/exports
 sudo systemctl restart nfs-kernel-server
 
 echo '/var/nfs/general 192.168.11.0/24(rw,async,no_subtree_check,all_squash)' | sudo tee -a /etc/exports
+echo '/var/nfs/general 10.0.0.0/8(rw,async,no_subtree_check,all_squash)' | sudo tee -a /etc/exports
+echo '/var/nfs/general 100.0.0.0/8(rw,async,no_subtree_check,all_squash)' | sudo tee -a /etc/exports
