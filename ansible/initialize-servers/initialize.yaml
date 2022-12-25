@@ -1,0 +1,45 @@
+- host: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: create group(totto2727)
+      group: 
+        name: totto2727
+        gid: 2727
+    - name: create group(sudo)
+      group: 
+        name: sudoers
+        gid: 27272
+    - name: allow 'sudo' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%sudoers'
+        line: '%sudoers ALL=(ALL) NOPASSWD: ALL'
+    - name: create user(totto2727)
+      user:
+        name: totto2727
+        uid: 2727
+        group: totto2727
+        create_home: true
+    - name: append groups
+      user:
+        name: totto2727
+        append: true
+        gruops: 
+          - sudoers
+    - name: copy ssh authorized_keys
+      file:
+        path: /home/totto2727/.ssh
+        owner: totto2727
+        group: totto2727
+        mode: '0755'
+        state: directory
+      copy:
+        src: "{{ home_dir }}/.ssh/authorized_keys"
+        dest: /home/totto2727/.ssh/authorized_keys
+        onwer: totto2727
+        group: totto2727
+        mode: '0644'
+        state: file
+
