@@ -45,6 +45,11 @@ make_link ~/dotfiles/.config/helix ~/.config/helix
 mkdir -p ~/.config/gitui
 make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
 
+### Ansible
+sudo mkdir -p /usr/local/etc/ansible
+sudo ln -s -f -v "$HOME/dotfiles/ansible/inventory" /usr/local/etc/ansible/hosts
+sudo ln -s -f -v "$HOME/dotfiles/ansible/ansible.cfg" /usr/local/etc/ansible/ansible.cfg
+
 ### VSCode
 # ln -v -s ~/dotfiles/vscode/settings.json ~/Library/"Application Support"/Code/User/settings.json
 # sh ~/dotfiles/vscode/extention.sh

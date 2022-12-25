@@ -1,0 +1,12 @@
+[ubuntu]
+dev-surface3.totto.page
+dev-oracle.totto.page
+
+[ubuntu:vars]
+home_dir=/home/totto2727
+
+[mac]
+localhost ansible_connection=local
+
+[mac:vars]
+home_dir=/Users/h_tsuchida
