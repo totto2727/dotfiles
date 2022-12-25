@@ -34,7 +34,7 @@
         repo: git@github.com:totto2727-org/dotfiles.git
         dest: "{{ home_dir }}/dotfiles"
         clone: true
-        update: true
+        update: "{{ update_dotfiles }}"
 
     - name: Clone ssh_config
       git:
@@ -58,10 +58,6 @@
           src: "{{ home_dir }}/ssh_config/authorized_keys"
         - dest: "{{ home_dir }}/.ssh/config"
           src: "{{ home_dir }}/ssh_config/config"
-        - dest: "{{ home_dir }}/.ssh/.gitignore"
-          src: "{{ home_dir }}/ssh_config/.gitignore"
-        - dest: "{{ home_dir }}/.ssh/.git"
-          src: "{{ home_dir }}/ssh_config/.git"
 
     - name: Clone git_config
       git:
@@ -75,5 +71,22 @@
         dest: "{{ home_dir }}/.git"
         state: link
         force: true
+
+- hosts: ubuntu
+  gather_facts: false
+  tasks:
+    - name: Make link of sshd_config
+      become: true
+      file:
+        src: "{{ home_dir }}/ssh_config/sshd_config"
+        dest: /etc/ssh/sshd_config
+        state: link
+        force: true
+    - name: Reload sshd
+      become: true
+      systemd:
+        name: sshd
+        state: reloaded
+
 
 
