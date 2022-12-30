@@ -2,7 +2,8 @@
 packages=(
 	nodejs
 	python
-	golang)
+	golang
+)
 
 is_installed() {
 	local i

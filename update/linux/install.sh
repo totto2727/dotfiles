@@ -1,6 +1,6 @@
 #!/bin/bash
 sh ~/dotfiles/update/linux/install-asdf.sh
-sh ~/dotfiles/update/asdf/update.sh
+bash ~/dotfiles/update/asdf/update.bash
 
 sh ~/dotfiles/update/linux/install-rust.sh
 
