@@ -67,7 +67,7 @@ mason_lspconfig.setup_handlers {
 -- Systemの実行ファイルを使用する場合
 ---- Deno
 lspconfig.denols.setup {
-  autostart = not detected_root_dir(node_root_dir),
+  autostart = false,
   single_file_support = true,
   on_attach = on_attach,
   capabilities = capabilities,
