@@ -1,6 +1,6 @@
 function update
     echo -e "\nasdf"
-    bash ~/dotfiles/update/asdf.bash
+    bash ~/dotfiles/update/asdf/update.bash
 
     echo -e "\nbrew"
     brew update
