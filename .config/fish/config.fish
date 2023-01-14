@@ -6,6 +6,10 @@ fish_add_path ~/.dotnet
 fish_add_path ~/.dotnet/tools
 fish_add_path ~/.cargo/bin
 
+if test -f /Users/h_tsuchida/.asdf/installs/python/anaconda3-2022.10/bin/conda
+    eval /Users/h_tsuchida/.asdf/installs/python/anaconda3-2022.10/bin/conda "shell.fish" "hook" $argv | source
+end
+
 if test $os = Darwin
     test -d /opt/homebrew && eval $(/opt/homebrew/bin/brew shellenv)
 else if test $os = Linux
