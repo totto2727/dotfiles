@@ -1,12 +1,16 @@
 local ok, saga = pcall(require, "lspsaga")
 if not ok then return end
 
-saga.init_lsp_saga {
-  code_action_icon = "",
-  move_in_saga = { prev = "<M-p>", next = "<M-n>" },
-  server_filetype_map = {
-    typescript = 'typescript'
-  }
+saga.setup {
+  preview = {
+    lines_above = 0,
+    lines_below = 10,
+  },
+  scroll_preview = {
+    scroll_down = '<M-n>',
+    scroll_up = '<M-p>',
+  },
+  request_timeout = 2000,
 }
 
 vim.keymap.set('n', 'mr', '<Cmd>Lspsaga rename<CR>')
