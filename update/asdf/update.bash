@@ -18,7 +18,7 @@ is_installed() {
 }
 
 for package in "${packages[@]}"; do
-	if "$(is_installed "$package")"; then
+	if is_installed "$package"; then
 		echo "${package} installed"
 	else
 		asdf plugin add "$package"

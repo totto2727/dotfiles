@@ -11,3 +11,5 @@ CLIENT_DIR=$HOME/nfs/general
 
 sudo mount -o vers=4 -o bg "$DOMAIN":"$HOST_DIR" "$CLIENT_DIR"
 echo "$DOMAIN:$HOST_DIR $CLIENT_DIR nfs defaults 0 0" | sudo tee -a /etc/fstab
+
+sudo mount -a
