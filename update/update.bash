@@ -1,9 +1,10 @@
 #!/bin/bash
 
-bash ~/dotfiles/update/theme.sh
+bash ~/dotfiles/update/theme.bash
 
 bash ~/dotfiles/update/asdf/update.bash
 
-bash ~/dotfiles/update/python/update.sh
-bash ~/dotfiles/update/npm/update.sh
+bash ~/dotfiles/update/python/update.bash
+
+bash ~/dotfiles/update/npm/update.bash
 
