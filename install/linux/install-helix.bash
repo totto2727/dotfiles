@@ -1,7 +1,13 @@
 #!/bin/bash
-type tree-sitter >/dev/null 2>&1 || cargo install tree-sitter-cli || (echo 'require rust' && exit)
 
-echo installed cargo and tree-sitter
+source ~/dotfiles/static/script/make_link.bash
+source ~/dotfiles/static/script/exist.bash
+
+target=hx
+exist "$target" && echo "$target" is installed && exit 0
+
+target=tree-tree-sitter
+exist "$target" && echo "$target" is installed || cargo install tree-sitter-cli || (echo 'rust is required' && exit 1)
 
 cd || exit
 git clone https://github.com/helix-editor/helix
@@ -13,3 +19,5 @@ ln -s -f ~/helix/runtime/ ~/.config/helix/runtime
 
 hx -g fetch
 hx -g build
+
+make_link ~/dotfiles/.config/helix ~/.config/helix

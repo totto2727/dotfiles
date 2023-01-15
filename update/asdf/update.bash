@@ -1,4 +1,10 @@
 #!/bin/bash
+
+source ~/dotfiles/static/script/exist.bash
+
+target=asdf
+exist "$target" || (echo "$target" is not installed && exit 1)
+
 packages=(
 	nodejs
 	python

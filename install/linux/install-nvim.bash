@@ -3,7 +3,8 @@
 source ~/dotfiles/static/script/make_link.bash
 source ~/dotfiles/static/script/exist.bash
 
-exist nvim && echo nvim was installed && exit 0
+target=nvim
+exist "$target" && echo "$target" is installed && exit 0
 
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl
 type cargo >/dev/null 2>&1 || cargo install tree-sitter-cli || echo 'require rust' || exit

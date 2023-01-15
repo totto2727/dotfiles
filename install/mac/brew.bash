@@ -1,7 +1,6 @@
 #!/bin/bash
-if test "$(uname)" = Darwin; then
-	chmod -R go-w "$(brew --prefix)"/share
-fi
+
+chmod -R go-w "$(brew --prefix)"/share
 
 brew bundle --file=~/dotfiles/brew/Brewfile.brew
 

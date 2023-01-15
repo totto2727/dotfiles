@@ -2,7 +2,7 @@
 
 cd ~/helix || exit
 git pull || exit
-cargo install --path helix-term
+cargo install --locked --path helix-term
 
 hx -g fetch
 hx -g build

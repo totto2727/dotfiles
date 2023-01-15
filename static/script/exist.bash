@@ -1,5 +1,6 @@
 #!/bin/bash
 
 exist() {
-	type "${1}" >/dev/null 2>&1 || exit 1
+	which "${1}" > /dev/null 2>&1 || return 1
+	return 0
 }

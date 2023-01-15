@@ -1,2 +1,0 @@
-cargo install-update --all
-
