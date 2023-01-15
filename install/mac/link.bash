@@ -25,6 +25,7 @@ make_link ~/dotfiles/.config/karabiner ~/.config/karabiner
 ## ファイル
 ### zsh
 make_link ~/dotfiles/.zshrc ~/.zshrc
+make_link ~/dotfiles/.inputrc ~/.inputrc
 
 ### asdf
 make_link ~/dotfiles/.tool-versions ~/.tool-versions
