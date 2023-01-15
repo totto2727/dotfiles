@@ -9,7 +9,7 @@ git clone git@github.com:totto2727/ansible_playbooks.git ~/ansible_playbooks
 source ~/.asdf/asdf.sh
 bash ~/dotfiles/update/asdf/update.bash
 
-bash ../install/install.bash
+bash ~/dotfiles/install/install.bash
 
 echo "fish ./fish.fish"
 
