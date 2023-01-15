@@ -1,4 +1,5 @@
 #!/bin/bash
+
 mkdir -p ~/.config
 
 make_link() {

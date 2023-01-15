@@ -1,12 +1,12 @@
 #!/bin/bash
-# OS=$(uname)
-#
-# if test "$OS" = Darwin; then
-# 	chmod -R go-w "$(brew --prefix)"/share
-# 	echo ln -s ~/Library/"Mobile Documents"/"com~apple~CloudDocs" ~/iCloud
-# fi
-#
-# mkdir -p ~/.config
+OS=$(uname)
+
+if test "$OS" = Darwin; then
+	chmod -R go-w "$(brew --prefix)"/share
+	echo ln -s ~/Library/"Mobile Documents"/"com~apple~CloudDocs" ~/iCloud
+fi
+
+mkdir -p ~/.config
 
 make_link() {
 	to=${1}
@@ -24,31 +24,16 @@ make_link() {
 
 # シンボリックリンクの生成と設定
 ## ディレクトリ
-### ssh
-# if ! test -e ~/.ssh/config; then
-# 	cd || exit
-# 	sh ~/dotfiles/setup/ssh.sh
-# fi
 
-# ### Git
-# cd || exit
-# test -d ~/git_config || git clone git@github.com:totto2727/git_config.git
-# make_link ~/git_config ~/.config/git
-#
-# ### nvim
+### nvim
 # make_link ~/dotfiles/.config/nvim ~/.config/nvim
-#
-# ### helix
+
+### helix
 # make_link ~/dotfiles/.config/helix ~/.config/helix
-#
-# ### gitui
+
+### gitui
 # mkdir -p ~/.config/gitui
 # make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
-
-# ### Ansible
-# sudo mkdir -p /usr/local/etc/ansible
-# sudo ln -s -f -v "$HOME/dotfiles/ansible/inventory" /usr/local/etc/ansible/hosts
-# sudo ln -s -f -v "$HOME/dotfiles/ansible/ansible.cfg" /usr/local/etc/ansible/ansible.cfg
 
 ### VSCode
 # ln -v -s ~/dotfiles/vscode/settings.json ~/Library/"Application Support"/Code/User/settings.json
@@ -64,26 +49,26 @@ make_link() {
 ### zsh
 # make_link ~/dotfiles/.zshrc ~/.zshrc
 
-# ### asdf
+### asdf
 # make_link ~/dotfiles/.tool-versions ~/.tool-versions
-#
-# #### asdf-golang
+
+#### asdf-golang
 # make_link ~/dotfiles/.default-golang-pkgs ~/.default-golang-pkgs
-#
-# ### textlint
+
+### textlint
 # make_link ~/dotfiles/.textlintrc ~/.textlintrc
-#
-# ### Tmux
+
+### Tmux
 # make_link ~/dotfiles/.tmux.conf ~/.tmux.conf
-#
-# ### Starship
+
+### Starship
 # make_link ~/dotfiles/.config/starship.toml ~/.config/starship.toml
-#
-# ## Mac
+
+## Mac
 # if test "$OS" = Darwin; then
-# 	### Karabiner
-# 	make_link ~/dotfiles/.config/karabiner ~/.config/karabiner
+	### Karabiner
+	# make_link ~/dotfiles/.config/karabiner ~/.config/karabiner
 # elif test "$OS" = Linux; then
-# 	### .inputrc
-# 	make_link ~/dotfiles/.inputrc ~/.inputrc
+	### .inputrc
+	# make_link ~/dotfiles/.inputrc ~/.inputrc
 # fi
