@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bash ./brew.bash
+bash ~/dotfiles/install/mac/brew.bash
 
 bash ~/dotfiles/install/mac/link.bash
 
@@ -10,6 +10,8 @@ source ~/.asdf/asdf.sh
 bash ~/dotfiles/update/asdf/update.bash
 
 bash ~/dotfiles/install/install.bash
+
+bash ~/dotfiles/install/mac/shell.bash
 
 echo "fish ./fish.fish"
 
