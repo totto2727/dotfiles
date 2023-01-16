@@ -18,10 +18,10 @@ use_logical_path = false
 
 [shell]
 disabled = false
-fish_indicator = ""
-bash_indicator = "_"
-zsh_indicator = "_"
-unknown_indicator = "mystery shell"
+fish_indicator = "F"
+bash_indicator = "B"
+zsh_indicator = "Z"
+unknown_indicator = "?"
 style = "cyan bold"
 
 [package]
