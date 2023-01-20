@@ -1,27 +1,34 @@
 # alias
 ## NeoVim
 if type -q nvim
+    alias v nvim
     alias vi nvim
     alias vim nvim
     alias vl 'nvim -R -'
+else
+    alias v vi
 end
 
 ## cat関係
 if type -q bat
-    alias cat "bat -pp"
+    alias b "bat"
+else
+    alias b "cat"
 end
 
 ## ls関係
 if type -q exa
-    alias ls exa
+    alias l "exa --icons"
     alias ll "exa --icons -al --group-directories-first --sort=name --git "
     alias lt "exa --icons -a -T -L 5 --ignore-glob='node_modules|.git' --git-ignore"
+else
+    alias l "ls"
 end
 
 ## SSHの簡略化
 abbr -g -a ssh-dev "ssh dev"
 abbr -g -a ssh-add-key "ssh-add ~/.ssh/keys/"
-abbr -g -a ssh-add-dev_old "ssh-add ~/.ssh/keys/totto2727.rsa"
+abbr -g -a ssh-add-dev-old "ssh-add ~/.ssh/keys/totto2727.rsa"
 abbr -g -a ssh-add-dev "ssh-add ~/.ssh/keys/id_ed25519"
 abbr -g -a ssh-shutdown-dev "ssh -t dev sudo shutdown now"
 abbr -g -a ssh-suspend-dev "ssh -t dev sudo systemctl suspend"

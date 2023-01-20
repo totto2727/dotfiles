@@ -20,6 +20,11 @@ fi
 unset __conda_setup
 
 shell_executed=$(echo $0 | sed -e 's/-//g')
+if [[ $shell_executed = "zsh"  ]] || [[ $shell_executed = ".zshrc" ]]; then
+  shell_executed="zsh"
+else
+  shell_executed="bash"
+fi
 SHELL=$(which $shell_executed)
 export SHELL
 
@@ -29,6 +34,10 @@ export COLORTERM
 chpwd() {
 	exa -a --icons || ls -a
 }
+
+if [[ $shell_executed = "zsh" ]]; then
+  autoload -Uz compinit && compinit
+fi
 
 source ~/dotfiles/static/script/exist.bash || exit
 
@@ -47,10 +56,25 @@ else
 fi
 export EDITOR
 
+if exist hx; then
+  alias h="hx"
+fi
+
+if exist exa; then
+  alias ll="exa -al --icons"
+  alias l="exa --icons"
+else
+  alias ll="ls -al"
+  alias l="ls"
+fi
+
+if exist bat; then
+  alias b="bat"
+else
+  alias b="cat"
+fi
+
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 
 exist starship && eval "$(starship init $shell_executed)"
 exist zoxide && eval "$(zoxide init $shell_executed)"
-
-
-
