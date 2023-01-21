@@ -19,25 +19,31 @@ if test -e "$(asdf where python)/bin/conda"; then
 fi
 unset __conda_setup
 
-shell_executed=$(echo $0 | sed -e 's/-//g')
-if [[ $shell_executed = "zsh"  ]] || [[ $shell_executed = ".zshrc" ]]; then
-  shell_executed="zsh"
-else
-  shell_executed="bash"
-fi
-SHELL=$(which $shell_executed)
+SHELL=$(which zsh)
 export SHELL
 
 COLORTERM=truecolor
 export COLORTERM
 
-chpwd() {
-	exa -a --icons || ls -a
-}
+autoload -Uz compinit && compinit
+autoload -Uz colors && colors
 
-if [[ $shell_executed = "zsh" ]]; then
-  autoload -Uz compinit && compinit
-fi
+bindkey -v
+setopt nonomatch
+setopt share_history
+setopt histignorealldups
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt correct
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+bindkey '^r' history-incremental-pattern-search-backward
+bindkey '^s' history-incremental-pattern-search-forward
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^b" history-beginning-search-forward-end
 
 source ~/dotfiles/static/script/exist.bash || exit
 
@@ -46,26 +52,34 @@ export PATH
 
 if exist nvim; then
 	EDITOR="$(which nvim)"
+  alias v="nvim"
   alias vi="nvim"
   alias vim="nvim"
-  alias v="nvim"
 else
 	EDITOR="$(which vi)"
-  alias nvim="vi"
   alias v="vi"
+  alias nvim="vi"
 fi
 export EDITOR
 
-if exist hx; then
-  alias h="hx"
-fi
+alias h="hx"
+
+alias gui="gitui"
 
 if exist exa; then
-  alias ll="exa -al --icons"
-  alias l="exa --icons"
+  alias l="exa -g --group-directories-first --icons"
+  alias ll="l -al"
+  alias lt="l -T"
+  chpwd() {
+    exa -a --icons
+  }
 else
-  alias ll="ls -al"
   alias l="ls"
+  alias ll="l -al"
+  alias lt="tree"
+  chpwd() {
+    ls -a
+  }
 fi
 
 if exist bat; then
@@ -76,5 +90,5 @@ fi
 
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 
-exist starship && eval "$(starship init $shell_executed)"
-exist zoxide && eval "$(zoxide init $shell_executed)"
+exist starship && eval "$(starship init zsh)"
+exist zoxide && eval "$(zoxide init zsh)"
