@@ -4,7 +4,7 @@ source ~/dotfiles/static/script/make_link.bash
 source ~/dotfiles/static/script/exist.bash
 
 sudo apt install fd-find ripgrep bat exa zoxide expect xclip xsel zsh
-snap install starship
+sudo snap install starship
 
 exist asdf || bash ~/dotfiles/install/linux/install-asdf.bash && source ~/.asdf/asdf.sh && bash ~/dotfiles/update/asdf/update.bash
 
