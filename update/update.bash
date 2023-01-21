@@ -8,3 +8,5 @@ bash ~/dotfiles/update/python/update.bash
 
 bash ~/dotfiles/update/npm/update.bash
 
+bash ~/dotfiles/update/link.sh
+

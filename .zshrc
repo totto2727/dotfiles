@@ -62,9 +62,7 @@ else
 fi
 export EDITOR
 
-alias h="hx"
-
-alias gui="gitui"
+exist hx && alias h="hx"
 
 if exist exa; then
   alias l="exa -g --group-directories-first --icons"
@@ -88,7 +86,10 @@ else
   alias b="cat"
 fi
 
+exist gitui && alias gui="gitui"
+
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
+exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 
 exist starship && eval "$(starship init zsh)"
 exist zoxide && eval "$(zoxide init zsh)"
