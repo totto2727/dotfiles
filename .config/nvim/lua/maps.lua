@@ -7,8 +7,8 @@ keymap.set('n', 'x', '"_x')
 keymap.set('n', 'c', '"_c')
 
 -- Increment/decrement
-keymap.set('n', '+', '<C-a>')
-keymap.set('n', '-', '<C-x>')
+keymap.set({ 'n', 'x' }, '+', '<C-a>')
+keymap.set({ 'n', 'x' }, '-', '<C-x>')
 
 -- Select all
 keymap.set('n', '<M-a>', 'gg<S-v>G')
@@ -43,21 +43,6 @@ keymap.set('n', '<M-h>', '<C-w>h')
 keymap.set('n', '<M-k>', '<C-w>k')
 keymap.set('n', '<M-j>', '<C-w>j')
 keymap.set('n', '<M-l>', '<C-w>l')
-
---terminal
--- keymap.set('', '<M-S-t><M-\\>', function()
---   vim.cmd('split')
---   vim.cmd('wincmd w')
---   vim.cmd('norm G')
---   vim.cmd('term')
--- end)
--- keymap.set('', '<M-S-t><M-|>', function()
---   vim.cmd('vsplit')
---   vim.cmd('wincmd w')
---   vim.cmd('norm G')
---   vim.cmd('term')
--- end)
--- keymap.set('t', '<M-o>', '<C-\\><C-n><C-o>')
 
 keymap.set('i', 'jj', '<ESC>')
 keymap.set({ 'n', 'v', 'i' }, '<M-q>', function() vim.cmd [[ q ]] end)

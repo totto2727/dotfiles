@@ -47,14 +47,12 @@ packer.startup(function(use)
   use 'Shougo/ddc.vim'
   use 'Shougo/pum.vim'
   use 'Shougo/ddc-ui-pum'
-  use 'Shougo/ddc-ui-native'
-  use 'Shougo/ddc-source-around'
-  use 'Shougo/ddc-matcher_head'
-  use 'Shougo/ddc-sorter_rank'
-  use 'Shougo/ddc-converter_remove_overlap'
   use 'matsui54/denops-popup-preview.vim'
   use 'matsui54/denops-signature_help'
+  use 'tani/ddc-fuzzy'
   use 'Shougo/ddc-source-nvim-lsp'
+  use 'matsui54/ddc-buffer'
+  use 'LumaKernel/ddc-source-file'
   use 'totto2727/ddc-snippy'
   -- Filer
   use 'nvim-lua/plenary.nvim' -- Common utilities

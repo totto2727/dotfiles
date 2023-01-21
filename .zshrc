@@ -68,17 +68,14 @@ if exist exa; then
   alias l="exa -g --group-directories-first --icons"
   alias ll="l -al"
   alias lt="l -T"
-  chpwd() {
-    exa -a --icons
-  }
 else
   alias l="ls"
   alias ll="l -al"
   alias lt="tree"
-  chpwd() {
-    ls -a
-  }
 fi
+chpwd() {
+  l
+}
 
 if exist bat; then
   alias b="bat"

@@ -1,27 +1,40 @@
 local ok1, yanky = pcall(require, "yanky")
-local ok2, utils = pcall(require, "yanky.utils")
-local ok3, telescope = pcall(require, "telescope")
+local ok2, telescope = pcall(require, "telescope")
 
-if not (ok1 and ok2 and ok3) then return end
+if not (ok1 and ok2) then return end
 
-local mapping = require("yanky.telescope.mapping")
-
-yanky.setup({
+yanky.setup {
+  ring = {
+    history_length = 100,
+    storage = "shada",
+    sync_with_numbered_registers = true,
+    cancel_event = "update",
+  },
   picker = {
+    select = {
+      action = nil, -- nil to use default put action
+    },
     telescope = {
-      mappings = {
-        default = mapping.put("r"),
-        n = {
-          p = mapping.put("p"),
-          P = mapping.put("P"),
-          r = mapping.set_register(utils.get_default_register())
-        },
-      }
-    }
-  }
-})
+      mappings = nil, -- nil to use default mappings
+    },
+  },
+  system_clipboard = {
+    sync_with_ring = true,
+  },
+  highlight = {
+    on_put = true,
+    on_yank = true,
+    timer = 500,
+  },
+  preserve_cursor_position = {
+    enabled = true,
+  },
+}
 
-vim.keymap.set('n', '<Space>y', ':Telescope yank_history<Enter>')
-vim.keymap.set('n', 'myc', ':YankyClearHistory<Enter>')
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
 telescope.load_extension('yank_history')
+vim.keymap.set('n', '<Space>y', function() require("telescope").extensions.yank_history.yank_history() end)
