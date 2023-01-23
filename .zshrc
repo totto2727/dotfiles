@@ -44,7 +44,7 @@ export EDITOR
 exist hx && alias h="hx"
 
 if exist exa; then
-  alias l="exa --group-directories-first --icons"
+  alias l="exa --group-directories-first --icons --ignore-glob='.DS_Store'"
   alias ll="l -alg"
   alias lt="l -T"
 else

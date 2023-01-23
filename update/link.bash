@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ "$(uname)" == 'Darwin' ]; then
+if [[ "$(uname)" == 'Darwin' ]]; then
 	os='Mac'
-elif [ "$(expr substr "$(uname -s)" 1 5)" == 'Linux' ]; then
+elif [[ "$(expr substr "$(uname -s)" 1 5)" == 'Linux' ]]; then
 	os='Linux'
-elif [ "$(expr substr "$(uname -s)" 1 10)" == 'MINGW32_NT' ]; then
+elif [[ "$(expr substr "$(uname -s)" 1 10)" == 'MINGW32_NT' ]]; then
 	os='Cygwin'
 else
 	echo "Your platform ($(uname -a)) is not supported."

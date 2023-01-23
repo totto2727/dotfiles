@@ -16,7 +16,7 @@ is_installed() {
 	local p
 	p=$(asdf plugin list)
 	for i in "${p[@]}"; do
-		if [ "$i" = "${1}" ]; then
+		if [[ "$i" == "${1}" ]]; then
 			return 0
 		fi
 	done
