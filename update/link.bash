@@ -48,10 +48,10 @@ exist zsh && make_link ~/dotfiles/.zprofile ~/.zprofile
 exist zsh && make_link ~/dotfiles/.zshenv ~/.zshenv
 
 make_link ~/dotfiles/.inputrc ~/.inputrc
-if [[ "$os" == "Linux" ]]; then
-	make_link ~/dotfiles/.bashrc ~/.bashrc
-	make_link ~/dotfiles/.profile ~/.profile
-fi
+# if [[ "$os" == "Linux" ]]; then
+# 	make_link ~/dotfiles/.bashrc ~/.bashrc
+# 	make_link ~/dotfiles/.profile ~/.profile
+# fi
 
 ### asdf
 exist asdf && make_link ~/dotfiles/.tool-versions ~/.tool-versions
