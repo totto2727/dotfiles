@@ -44,8 +44,8 @@ export EDITOR
 exist hx && alias h="hx"
 
 if exist exa; then
-  alias l="exa -g --group-directories-first --icons"
-  alias ll="l -al"
+  alias l="exa --group-directories-first --icons"
+  alias ll="l -alg"
   alias lt="l -T"
 else
   alias l="ls"
@@ -53,7 +53,7 @@ else
   alias lt="tree"
 fi
 chpwd() {
-  l
+  l -a
 }
 
 if exist bat; then

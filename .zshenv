@@ -11,6 +11,8 @@ case ${OSTYPE} in
     export PATH
     ;;
   linux*)
+    PATH=$HOME/.local/bin:/snap/bin:$HOME/bin:$PATH
+    export PATH
     ;;
 esac
 
