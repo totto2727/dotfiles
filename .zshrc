@@ -1,26 +1,8 @@
 #!/bin/zsh
 
-test -e "$HOME"/.asdf/asdf.sh && . "$HOME"/.asdf/asdf.sh
+# echo .zshrc
+
 test -d "$HOME"/.asdf/completions && fpath=("$HOME"/.asdf/completions $fpath)
-
-test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
-
-if test -e "$(asdf where python)/bin/conda"; then 
-  __conda_setup="$("$(asdf which conda)" 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-  else
-    if [ -f "$(asdf where python)/etc/profile.d/conda.sh" ]; then
-      . "$(asdf where python)/etc/profile.d/conda.sh"
-    else
-      export PATH="$(asdf where python)/bin:$PATH"
-    fi
-  fi
-fi
-unset __conda_setup
-
-SHELL=$(which zsh)
-export SHELL
 
 COLORTERM=truecolor
 export COLORTERM
@@ -46,9 +28,6 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^b" history-beginning-search-forward-end
 
 source ~/dotfiles/static/script/exist.bash || exit
-
-exist brew && PATH=$(brew --prefix)/bin:$PATH
-export PATH
 
 if exist nvim; then
 	EDITOR="$(which nvim)"
