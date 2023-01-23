@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 事前に鍵を生成してgithubに登録
+
 if type "brew" >/dev/null 2>&1; then
 	echo -e "\nbrew is installed" #コマンドが存在する時の処理
 
@@ -8,7 +10,6 @@ else
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 	eval "$(/opt/homebrew/bin/brew shellenv)"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zshrc
 fi
 
 brew install git
