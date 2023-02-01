@@ -5,18 +5,21 @@
 SHELL=$(which zsh)
 export SHELL
 
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
+
 case ${OSTYPE} in
   darwin*)
     PATH=/opt/homebrew/bin:$PATH
-    export PATH
     ;;
   linux*)
     PATH=$HOME/.local/bin:/snap/bin:$HOME/bin:$PATH
-    export PATH
     ;;
 esac
+export PATH
 
-test -e "$HOME"/.asdf/asdf.sh && . "$HOME"/.asdf/asdf.sh
+test -d "$HOME"/.asdf && . $(brew --prefix asdf)/libexec/asdf.sh
 test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
 
 if test -e "$(asdf where python)/bin/conda"; then 
