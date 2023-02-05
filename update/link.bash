@@ -23,6 +23,15 @@ source ~/dotfiles/static/script/exist.bash
 
 # シンボリックリンクの生成と設定
 ## ディレクトリ
+### git_config
+test -d ~/git_config && make_link ~/git_config ~/.config/git
+
+### git_config
+mkdir -p ~/.ssh
+test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/config ~/.config/config
+test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.git ~/.config/.git
+test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.gitignore ~/.config/.gitignore
+
 ### nvim
 exist nvim && make_link ~/dotfiles/.config/nvim ~/.config/nvim
 
@@ -49,8 +58,8 @@ exist zsh && make_link ~/dotfiles/.zshenv ~/.zshenv
 
 make_link ~/dotfiles/.inputrc ~/.inputrc
 # if [[ "$os" == "Linux" ]]; then
-# 	make_link ~/dotfiles/.bashrc ~/.bashrc
-# 	make_link ~/dotfiles/.profile ~/.profile
+#	make_link ~/dotfiles/.bashrc ~/.bashrc
+#	make_link ~/dotfiles/.profile ~/.profile
 # fi
 
 ### asdf

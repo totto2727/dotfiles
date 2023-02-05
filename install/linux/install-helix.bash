@@ -12,7 +12,7 @@ exist "$target" && echo "$target" is installed || cargo install tree-sitter-cli 
 cd || exit
 git clone https://github.com/helix-editor/helix
 cd ~/helix || exit
-cargo install --path helix-term
+cargo install --locked --path helix-term
 
 rm -r ~/.config/helix/runtime
 ln -s -f ~/helix/runtime/ ~/.config/helix/runtime

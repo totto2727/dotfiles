@@ -19,7 +19,8 @@ case ${OSTYPE} in
 esac
 export PATH
 
-test -d "$HOME"/.asdf && . $(brew --prefix asdf)/libexec/asdf.sh
+which brew >/dev/null 2>&1 && test -d "$HOME"/.asdf && . $(brew --prefix asdf)/libexec/asdf.sh
+test -e "$HOME"/.asdf/asdf.sh && . "$HOME/.asdf/asdf.sh"
 test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
 
 if test -e "$(asdf where python)/bin/conda"; then 
