@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-# echo .zshenv
-
 SHELL=$(which zsh)
 export SHELL
 

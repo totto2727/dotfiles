@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-# echo .zshrc
-
 test -d "$HOME"/.asdf/completions && fpath=("$HOME"/.asdf/completions $fpath)
 
 COLORTERM=truecolor
@@ -29,6 +27,13 @@ bindkey "^b" history-beginning-search-forward-end
 
 source ~/dotfiles/static/script/exist.bash || exit
 
+exist starship && eval "$(starship init zsh)"
+exist zoxide && eval "$(zoxide init zsh)"
+
+chpwd() {
+  l -a
+}
+
 if exist nvim; then
 	EDITOR="$(which nvim)"
   alias v="nvim"
@@ -52,9 +57,6 @@ else
   alias ll="l -al"
   alias lt="tree"
 fi
-chpwd() {
-  l -a
-}
 
 if exist bat; then
   alias b="bat"
@@ -67,5 +69,3 @@ exist gitui && alias gui="gitui"
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 
-exist starship && eval "$(starship init zsh)"
-exist zoxide && eval "$(zoxide init zsh)"
