@@ -64,9 +64,8 @@ make_link ~/dotfiles/.inputrc ~/.inputrc
 
 ### asdf
 exist asdf && make_link ~/dotfiles/.tool-versions ~/.tool-versions
-
-#### asdf-golang
 exist asdf && make_link ~/dotfiles/.default-golang-pkgs ~/.default-golang-pkgs
+exist asdf && make_link ~/dotfiles/.default-npm-packages ~/.default-npm-packages
 
 ### textlint
 # make_link ~/dotfiles/.textlintrc ~/.textlintrc
