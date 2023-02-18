@@ -1,6 +1,7 @@
 local M = {}
 
 M.upper_first = function(value)
+  if value == "" or value == nil then return "" end
   local first = string.sub(value, 0, 1)
   local rest = string.sub(value, 2)
   return string.upper(first) .. rest
@@ -9,6 +10,7 @@ end
 M.upper = string.upper
 
 M.lower_first = function(value)
+  if value == "" or value == nil then return "" end
   local first = string.sub(value, 0, 1)
   local rest = string.sub(value, 2)
   return string.lower(first) .. rest
@@ -42,30 +44,47 @@ M.to_pascal = function(s)
   end
 end
 
-M.to_snake = function(s) return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)'
-    ,
-    '%1_%2'):lower()
+M.to_snake = function(s)
+  return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)'
+          ,
+          '%1_%2'):lower()
 end
 
-M.to_constant = function(s) return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)'
-    ,
-    '%1_%2'):upper()
+M.to_constant = function(s)
+  return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)'
+          ,
+          '%1_%2'):upper()
 end
 
-M.to_kabab = function(s) return s:gsub('%f[^%l]%u', '-%1'):gsub('%f[^%a]%d', '-%1'):gsub('%f[^%d]%a', '-%1'):gsub('(%u)(%u%l)'
-    ,
-    '%1-%2'):lower()
+M.to_kabab = function(s)
+  return s:gsub('%f[^%l]%u', '-%1'):gsub('%f[^%a]%d', '-%1'):gsub('%f[^%d]%a', '-%1'):gsub('(%u)(%u%l)'
+          ,
+          '%1-%2'):lower()
 end
 
-M.to_kabab_upper = function(s) return s:gsub('%f[^%l]%u', '-%1'):gsub('%f[^%a]%d', '-%1'):gsub('%f[^%d]%a', '-%1'):gsub('(%u)(%u%l)'
-    ,
-    '%1-%2'):upper()
+M.to_kabab_upper = function(s)
+  return s:gsub('%f[^%l]%u', '-%1'):gsub('%f[^%a]%d', '-%1'):gsub('%f[^%d]%a', '-%1'):gsub('(%u)(%u%l)'
+          ,
+          '%1-%2'):upper()
 end
 
 M.rust_type_to_struct_shorthand = function(s) return string.gsub(s, '(%w+) *: *%w+,? *\n* *', '%1,') end
 
 return M
 
+-- print(M.upper_first "this_should_work")
+-- print(M.upper_first "this-should-work")
+-- print(M.upper_first "ThisShouldWork")
+-- print(M.upper_first "thisShouldWork")
+-- print(M.upper_first "")
+-- print(M.upper_first "")
+-- print(M.upper_first "")
+-- print(M.upper_first "")
+-- print(M.upper_first(nil))
+-- print(M.upper_first(nil))
+-- print(M.upper_first(nil))
+-- print(M.upper_first(nil))
+--
 -- print(M.to_pascal "this_should_work")
 -- print(M.to_pascal "this-should-work")
 -- print(M.to_pascal "thisShouldWork")

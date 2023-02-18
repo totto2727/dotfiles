@@ -56,8 +56,8 @@ rust_type_to_struct_shorthand = util.rust_type_to_struct_shorthand
 snippy.setup({
   mappings = {
     is = {
-      ['<M-Space>'] = 'expand_or_advance',
-      ['<M-S-Space>'] = 'previous',
+      ['<M-Tab>'] = 'expand_or_advance',
+      ['<M-S-Tab>'] = 'previous',
     },
   },
 })

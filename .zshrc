@@ -30,17 +30,13 @@ source ~/dotfiles/static/script/exist.bash || exit
 exist starship && eval "$(starship init zsh)"
 exist zoxide && eval "$(zoxide init zsh)"
 
-chpwd() {
-  l -a
-}
-
 if exist nvim; then
-	EDITOR="$(which nvim)"
+  EDITOR="$(which nvim)"
   alias v="nvim"
   alias vi="nvim"
   alias vim="nvim"
 else
-	EDITOR="$(which vi)"
+  EDITOR="$(which vi)"
   alias v="vi"
   alias nvim="vi"
 fi
@@ -57,6 +53,9 @@ else
   alias ll="l -al"
   alias lt="tree"
 fi
+chpwd() {
+  l -a
+}
 
 if exist bat; then
   alias b="bat"
@@ -65,6 +64,17 @@ else
 fi
 
 exist gitui && alias gui="gitui"
+if exist git; then
+  alias g="git"
+  alias gs="git status"
+  alias gch="git checkout"
+  alias gcob="git checkout -b"
+  alias gmain="git checkout main"
+  alias gtotto="git checkout totto2727"
+  alias gc="git commit"
+  alias gamend="git commit --amend"
+  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*' | xargs git branch -d"
+fi
 
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'

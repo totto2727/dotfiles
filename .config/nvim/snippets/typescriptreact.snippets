@@ -8,7 +8,7 @@ snippet import
 	import ${2} from "${1}"
 
 snippet state
-	const [${1:name}, set${1/.*/\=v:lua.upper_first(submatch(0))/}] = useState(${2:defaultValue})
+	const [${1:name}, set${1/.*/\=v:lua.pascal(submatch(0))/}] = useState(${2:defaultValue})
 
 snippet effect
 	useState(()=>{
