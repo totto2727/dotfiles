@@ -18,11 +18,10 @@ packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'lewis6991/gitsigns.nvim'
   use 'norcalli/nvim-colorizer.lua'
-  use "lukas-reineke/indent-blankline.nvim"
-  use "levouh/tint.nvim"
   ---- Treesitter
   use 'nvim-treesitter/nvim-treesitter'
-  -- use "windwp/nvim-autopairs"
+  use 'HiPhish/nvim-ts-rainbow2'
+  use "windwp/nvim-autopairs"
   use 'windwp/nvim-ts-autotag'
   use 'numToStr/Comment.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -43,6 +42,8 @@ packer.startup(function(use)
   use 'mattn/vim-goimports'
   ---- F#
   use { 'ionide/Ionide-vim' }
+  ---- Dart&Flutter
+  use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
   -- Completion
   use 'Shougo/ddc.vim'
   use 'Shougo/pum.vim'

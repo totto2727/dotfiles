@@ -44,31 +44,12 @@ null_ls.setup({
         null_ls.builtins.formatting.fish_indent,
         null_ls.builtins.diagnostics.fish,
 
-        -- ESLint
-        null_ls.builtins.diagnostics.eslint.with({
-            diagnostics_format = '[eslint] #{m}\n(#{c})',
-            condition = function(utils)
-              return utils.has_file { ".eslintrc", ".eslintrc.js" }
-            end,
-        }),
-        null_ls.builtins.code_actions.eslint.with({
-            condition = function(utils)
-              return utils.has_file { ".eslintrc", ".eslintrc.js" }
-            end,
-        }),
-        -- prettier
-        null_ls.builtins.formatting.prettier.with {
-            condition = function(utils)
-              return utils.has_file { ".prettierrc", ".prettierrc.js" }
-            end
-        },
-
         -- Deno
-        null_ls.builtins.formatting.deno_fmt.with {
-            condition = function(utils)
-              return not (utils.has_file { ".prettierrc", ".prettierrc.js" })
-            end,
-        }
+        -- null_ls.builtins.formatting.deno_fmt.with {
+        --     condition = function(utils)
+        --       return not (utils.has_file { ".prettierrc", ".prettierrc.js" })
+        --     end,
+        -- }
     }
 })
 
