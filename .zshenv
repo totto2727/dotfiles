@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+unsetopt GLOBAL_RCS
+
 SHELL=$(which zsh)
 export SHELL
 
@@ -7,6 +9,7 @@ if [ -x /usr/libexec/path_helper ]; then
   eval `/usr/libexec/path_helper -s`
 fi
 
+PATH=$HOME/.local/bin:$PATH
 case ${OSTYPE} in
   darwin*)
     PATH=/opt/homebrew/bin:$PATH
@@ -34,4 +37,12 @@ if test -e "$(asdf where python)/bin/conda"; then
   fi
 fi
 unset __conda_setup
+
+STUDIO_HOME="/Users/h_tsuchida/Library/Application Support/JetBrains/Toolbox/apps/AndroidStudio/ch-0/221.6008.13.2211.9514443/Android Studio.app"
+if test -d $STUDIO_HOME; then
+  JAVA_HOME=$STUDIO_HOME/Contents/jre/Contents/Home
+  export JAVA_HOME
+  PATH=$JAVA_HOME/bin:$PATH
+  export PATH
+fi
 

@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+test -e /etc/zshrc && . /etc/zshrc
 test -d "$HOME"/.asdf/completions && fpath=("$HOME"/.asdf/completions $fpath)
 
 COLORTERM=truecolor
@@ -24,6 +25,7 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^b" history-beginning-search-forward-end
+bindkey "^?" backward-delete-char
 
 source ~/dotfiles/static/script/exist.bash || exit
 
@@ -68,12 +70,12 @@ if exist git; then
   alias g="git"
   alias gs="git status"
   alias gch="git checkout"
-  alias gcob="git checkout -b"
+  alias gchb="git checkout -b"
   alias gmain="git checkout main"
   alias gtotto="git checkout totto2727"
   alias gc="git commit"
   alias gamend="git commit --amend"
-  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*' | xargs git branch -d"
+  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed '/main/d' | xargs git branch -d"
 fi
 
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
