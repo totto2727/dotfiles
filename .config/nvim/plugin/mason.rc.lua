@@ -14,7 +14,7 @@ mason.setup({
 })
 
 mason_lspconfig.setup({
-    ensure_installed = { "sumneko_lua", "bashls" },
+    ensure_installed = { "lua_ls", "bashls" },
 })
 
 local signs = { error = " ", warn = " ", hint = " ", info = " " }
