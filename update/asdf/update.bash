@@ -28,9 +28,7 @@ for package in "${packages[@]}"; do
 		echo "${package} installed"
 	else
 		asdf plugin add "$package"
+		asdf plugin update "$package"
+		asdf install "$package"
 	fi
 done
-
-asdf plugin update --all
-
-asdf install
