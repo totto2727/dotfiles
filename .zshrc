@@ -81,3 +81,7 @@ fi
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 
+if exist keychain; then
+  test -e $HOME/.ssh/id_ed25519 && keychain -q --nogui $HOME/.ssh/id_ed25519
+  source $HOME/.keychain/$HOST-sh
+fi
