@@ -3,7 +3,6 @@ if not ok then return end
 
 vim.cmd [[
 call ddc#custom#patch_global('ui', 'pum')
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sources', ['file', 'snippy', 'nvim-lsp', 'buffer'])
 call ddc#custom#patch_global('sourceOptions', {
 \ '_': {
