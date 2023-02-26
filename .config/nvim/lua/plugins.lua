@@ -65,7 +65,6 @@ packer.startup(function(use)
   use "gbprod/yanky.nvim"
   -- Tool
   use 'tpope/vim-surround'
-  use "windwp/nvim-autopairs"
   use 'monkoose/matchparen.nvim'
   use 'c60cb859/bufMov.nvim'
 end)
