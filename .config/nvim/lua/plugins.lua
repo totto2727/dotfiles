@@ -64,6 +64,7 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope-ghq.nvim'
   use "gbprod/yanky.nvim"
   -- Tool
+  use 'monaqa/dial.nvim'
   use 'tpope/vim-surround'
   use 'monkoose/matchparen.nvim'
   use 'c60cb859/bufMov.nvim'

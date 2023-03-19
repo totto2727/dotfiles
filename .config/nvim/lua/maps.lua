@@ -6,22 +6,20 @@ keymap.set('n', '<M-w>', function() vim.cmd [[ wq ]] end)
 keymap.set('n', 'x', '"_x')
 keymap.set('n', 'c', '"_c')
 
--- Increment/decrement
-keymap.set({ 'n', 'x' }, '+', '<C-a>')
-keymap.set({ 'n', 'x' }, '-', '<C-x>')
-
 -- Select all
 keymap.set('n', '<M-a>', 'gg<S-v>G')
 
 -- Split Window
-keymap.set('n', '<M-\\>', function() vim.cmd [[ 
-split
-wincmd w
+keymap.set('n', '<M-\\>', function()
+  vim.cmd [[
+  split
+  wincmd w
 ]]
 end)
-keymap.set('n', '<M-|>', function() vim.cmd [[ 
-vsplit
-wincmd w
+keymap.set('n', '<M-|>', function()
+  vim.cmd [[
+  vsplit
+  wincmd w
 ]]
 end)
 
