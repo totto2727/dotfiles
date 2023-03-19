@@ -69,13 +69,14 @@ exist gitui && alias gui="gitui"
 if exist git; then
   alias g="git"
   alias gs="git status"
+  alias gb='git branch'
   alias gch="git checkout"
   alias gchb="git checkout -b"
   alias gmain="git checkout main"
   alias gtotto="git checkout totto2727"
   alias gc="git commit"
   alias gamend="git commit --amend"
-  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed '/main/d' | xargs git branch -d"
+  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed '/main/d' | sed 'remote/d' | xargs git branch -d"
 fi
 
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
