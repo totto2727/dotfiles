@@ -27,10 +27,6 @@ vim.keymap.set('n', '<C-p>', "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
 vim.keymap.set("n", "mp", "<cmd>Lspsaga peek_definition<CR>")
 
 -- Code Action
-vim.keymap.set("n", "<C-a>", function() vim.cmd [[Lspsaga code_action]] end)
-vim.keymap.set("v", "ma", function()
-  vim.cmd('Lspsaga range_code_action')
-end)
 vim.keymap.set("n", "ma", function()
   vim.diagnostic.goto_next()
   vim.cmd('Lspsaga code_action')
