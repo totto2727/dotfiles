@@ -53,6 +53,12 @@ kebabUpper = util.to_kabab_upper
 rust_type_to_struct_shorthand = util.rust_type_to_struct_shorthand
 
 snippy.setup({
+  scopes = {
+    _ = {},
+    javascriptreact = { '_', 'javascript', 'javascriptreact' },
+    typescript = { '_', 'javascript', 'typescript' },
+    typescriptreact = { '_', 'javascriptreact', 'typescript', 'typescriptreact' },
+  },
   mappings = {
     is = {
       ['<M-Tab>'] = 'expand_or_advance',
