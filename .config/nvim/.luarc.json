@@ -1,5 +1,16 @@
 {
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "rust_type_to_struct_shorthand",
+        "kebabUpper",
+        "kebab",
+        "constant",
+        "snake",
+        "camel",
+        "pascal",
+        "lower",
+        "upeer",
+        "lower_first",
+        "upeer_first"
     ]
 }

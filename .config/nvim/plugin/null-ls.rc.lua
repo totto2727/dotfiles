@@ -32,5 +32,3 @@ null_ls.setup({
   }
 })
 
-vim.keymap.set('n', '<M-n>', '<Nop>')
-vim.keymap.set('n', '<M-p>', '<Nop>')
