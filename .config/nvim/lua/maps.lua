@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<c-w>', function() vim.cmd [[ w ]] end)
+vim.keymap.set('n', '<C-w>', function() vim.cmd [[ w ]] end)
 vim.keymap.set({ 'n', 'x' }, '<C-S-q>', function() vim.cmd [[ q ]] end)
 vim.keymap.set('n', '<C-S-w>', function() vim.cmd [[ wq ]] end)
 vim.keymap.set('t', '<C-S-q>', '<C-\\><C-n>:q<Enter>')
@@ -10,13 +10,13 @@ vim.keymap.set('n', 'c', '"_c')
 vim.keymap.set('n', '<M-a>', 'ggVG')
 
 -- Split Window
-vim.keymap.set('n', '<C-s>', function()
+vim.keymap.set('n', '<C-S-s>', function()
   vim.cmd [[
   split
   wincmd w
 ]]
 end)
-vim.keymap.set('n', '<C-v>', function()
+vim.keymap.set('n', '<C-s>', function()
   vim.cmd [[
   vsplit
   wincmd w
