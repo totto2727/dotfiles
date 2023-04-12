@@ -27,6 +27,8 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^b" history-beginning-search-forward-end
 bindkey "^?" backward-delete-char
 
+export GPG_TTY=$TTY
+
 source ~/dotfiles/static/script/exist.bash || exit
 
 exist starship && eval "$(starship init zsh)"
