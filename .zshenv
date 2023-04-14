@@ -18,6 +18,11 @@ case ${OSTYPE} in
     PATH=$HOME/.local/bin:/snap/bin:$HOME/bin:$PATH
     ;;
 esac
+
+VOLTA_HOME="$HOME/.volta"
+PATH="$VOLTA_HOME/bin:$PATH"
+
+export VOLTA_HOME
 export PATH
 
 which brew >/dev/null 2>&1 && test -d "$HOME"/.asdf && . $(brew --prefix asdf)/libexec/asdf.sh

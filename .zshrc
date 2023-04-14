@@ -88,3 +88,9 @@ if exist keychain; then
   test -e $HOME/.ssh/id_ed25519 && keychain -q --nogui $HOME/.ssh/id_ed25519
   source $HOME/.keychain/$HOST-sh
 fi
+
+if exist volta; then
+  alias vode="volta run node"
+  alias vpm="volta run npm"
+fi
+
