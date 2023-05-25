@@ -13,11 +13,14 @@ cat ~/dotfiles/static/package/Brewfile.cask | rg --pcre2 'font' >~/dotfiles/stat
 sudo cp ~/dotfiles/install/mac/zprofile /etc/zprofile
 
 exist rustup && rustup update
-
-cargo install cargo-update
+exist cargo && cargo install cargo-update
 exist cargo && cargo install-update --all
+
+# exist go &&
 
 exist pip3 && pip3 install --upgrade pip
 exist pip3 && pip3 freeze | xargs pip install -U
 exist pip3 && pip3 freeze > ~/dotfiles/static/package/requirements.txt
 
+test -e ~/dotfiles/update/link.bash && bash ~/dotfiles/update/link.bash
+test -e ~/dotfiles/update/theme.bash && bash ~/dotfiles/update/theme.bash

@@ -10,10 +10,11 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 # .local
-PATH=$HOME/.local/bin:$PATH
+PATH="$HOME/.local/bin:$PATH"
 
 # homebrew
-PATH=/opt/homebrew/bin:$PATH
+PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/sbin:$PATH"
 
 # asdf
 which brew >/dev/null 3>&1 && test -d "$HOME"/.asdf && . $(brew --prefix asdf)/libexec/asdf.sh
