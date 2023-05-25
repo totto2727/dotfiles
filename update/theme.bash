@@ -2,11 +2,6 @@
 
 curl https://raw.githubusercontent.com/aereal/vim-colors-japanesque/master/colors/japanesque.vim >~/dotfiles/.config/nvim/colors/japanesque.vim
 
-curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_day.fish >~/dotfiles/.config/fish/user_colors/tokyonight_day.fish
-curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_night.fish >~/dotfiles/.config/fish/user_colors/tokyonight_night.fish
-curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_storm.fish >~/dotfiles/.config/fish/user_colors/tokyonight_storm.fish
-curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/fish/tokyonight_moon.fish >~/dotfiles/.config/fish/user_colors/tokyonight_moon.fish
-
 if test -d ~/git_config; then
 	curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_day.gitconfig >~/git_config/tokyonight_day.gitconfig
 	curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_moon.gitconfig >~/git_config/tokyonight_moon.gitconfig

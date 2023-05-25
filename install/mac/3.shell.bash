@@ -15,6 +15,4 @@ zsh_path=$(brew --prefix)/bin/zsh
 zsh_exist=$(grep -q "$zsh_path" /etc/shells)
 test "$zsh_exist" || (echo "$zsh_path" | sudo tee -a /etc/shells)
 
-sudo sed -i.backup -e 's@^/bin/bash@# &@g' -e 's@^/bin/zsh@# &@g' /etc/shells
-
 chsh -s "$zsh_path"
