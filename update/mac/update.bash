@@ -2,6 +2,7 @@
 
 source ~/dotfiles/static/script/exist.bash
 
+brew bundle --file=~/dotfiles/static/package/Brewfile.brew
 brew update
 brew upgrade
 
@@ -12,8 +13,9 @@ cat ~/dotfiles/static/package/Brewfile.cask | rg --pcre2 'font' >~/dotfiles/stat
 
 sudo cp ~/dotfiles/install/mac/zprofile /etc/zprofile
 
+test -e ~/dotfiles/install/install.bash && bash ~/dotfiles/install/install.bash
+
 exist rustup && rustup update
-exist cargo && cargo install cargo-update
 exist cargo && cargo install-update --all
 
 # exist go &&
