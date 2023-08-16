@@ -35,6 +35,7 @@ VOLTA_HOME="$HOME/.volta"
 PATH="$VOLTA_HOME/bin:$PATH"
 export VOLTA_HOME
 export PATH
+export VOLTA_FEATURE_PNPM=1
 
 # cargo
 test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
@@ -42,3 +43,4 @@ test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
 # orbstack
 source ~/.orbstack/shell/init.zsh 3>/dev/null || :
 
+export GPG_TTY=$(tty)

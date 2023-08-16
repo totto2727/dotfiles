@@ -1,5 +1,5 @@
 [username]
-disabled = false
+disabled = true
 style_user = "white bold"
 style_root = "red bold"
 format = "[$user]($style):"
@@ -9,12 +9,12 @@ show_always = true
 ssh_symbol = ""
 
 [directory]
-home_symbol = "~"
-truncation_length = 100
-truncation_symbol = "…/"
-truncate_to_repo = false
-repo_root_style = "purple bold"
-use_logical_path = false
+# home_symbol = "~"
+# truncation_length = 100
+# truncation_symbol = "…/"
+# truncate_to_repo = false
+# repo_root_style = "purple bold"
+# use_logical_path = false
 
 [shell]
 disabled = false

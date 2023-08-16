@@ -33,6 +33,8 @@ source ~/dotfiles/static/script/exist.bash || exit
 
 exist starship && eval "$(starship init zsh)"
 exist zoxide && eval "$(zoxide init zsh)"
+exist ghr && source <(ghr shell bash)
+exist ghr && source <(ghr shell bash --completion)
 
 if exist nvim; then
   EDITOR="$(which nvim)"
@@ -68,6 +70,8 @@ else
 fi
 
 exist gitui && alias gui="gitui"
+exist ghr && exist fzf && alias rep='ghr cd $(ghr list | fzf)'
+exist ghr && exist fzf && exist code && alias repc='ghr open $(ghr list | fzf) code'
 if exist git; then
   alias g="git"
   alias gs="git status"
@@ -75,10 +79,18 @@ if exist git; then
   alias gch="git checkout"
   alias gchb="git checkout -b"
   alias gmain="git checkout main"
+  alias gmaster="git checkout master"
+  alias gstaging="git checkout staging"
+  alias gdevelopment="git checkout development"
+  alias gdev="git checkout dev"
   alias gtotto="git checkout totto2727"
   alias gc="git commit"
-  alias gamend="git commit --amend"
-  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed '/main/d' | sed 'remote/d' | xargs git branch -d"
+  alias gca="git commit --amend"
+  alias gpush="git push"
+  alias gpushf="git push --force-with-lease --force-if-includes"
+  alias gpull="git pull"
+  alias gsync="git pull && git push"
+  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
 fi
 
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
@@ -94,3 +106,4 @@ if exist volta; then
   alias vpm="volta run npm"
 fi
 
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"

@@ -6,7 +6,7 @@ brew bundle --file=~/dotfiles/static/package/Brewfile.brew
 brew update
 brew upgrade
 
-brew bundle dump -f --file "~/dotfiles/static/package/Brewfile"
+brew bundle dump -f --file "$HOME/dotfiles/static/package/Brewfile"
 cat ~/dotfiles/static/package/Brewfile | rg -e '^(brew|tap)' | rg --pcre2 '^(?!.*cask).*$' >~/dotfiles/static/package/Brewfile.brew
 cat ~/dotfiles/static/package/Brewfile | rg --pcre2 '(^cask)|(^tap (?=.*cask))' >~/dotfiles/static/package/Brewfile.cask
 cat ~/dotfiles/static/package/Brewfile.cask | rg --pcre2 'font' >~/dotfiles/static/package/Brewfile.cask.font
@@ -26,3 +26,5 @@ exist pip3 && pip3 freeze > ~/dotfiles/static/package/requirements.txt
 
 test -e ~/dotfiles/update/link.bash && bash ~/dotfiles/update/link.bash
 test -e ~/dotfiles/update/theme.bash && bash ~/dotfiles/update/theme.bash
+
+exist gh && gh extension upgrade --all

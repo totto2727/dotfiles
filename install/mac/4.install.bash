@@ -11,5 +11,7 @@ test -e ~/dotfiles/install/install.bash && bash ~/dotfiles/install/install.bash
 test -e ~/dotfiles/update/link.bash && bash ~/dotfiles/update/link.bash
 test -e ~/dotfiles/update/theme.bash && bash ~/dotfiles/update/theme.bash
 
+exist gh && gh extension install seachicken/gh-poi
+
 echo -e ":PackerInstall"
 echo -e ":TSInstall all"
