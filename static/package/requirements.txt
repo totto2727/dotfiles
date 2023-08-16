@@ -1,6 +1,10 @@
 argcomplete==3.0.8
+certifi==2023.7.22
 cffi==1.15.1
+cryptography @ file:///private/tmp/python-cryptography-20230801-6306-oaqugx/cryptography-41.0.3
+docutils==0.20.1
 lxml==4.9.2
+mercurial==6.5
 pycparser==2.21
 Pygments==2.15.1
 PyYAML==6.0
