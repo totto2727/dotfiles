@@ -25,44 +25,11 @@ packer.startup(function(use)
   use 'windwp/nvim-ts-autotag'
   use 'numToStr/Comment.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
-  -- LSP
-  use 'neovim/nvim-lspconfig' -- LSP
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  use 'jayp0521/mason-null-ls.nvim'
-  use 'onsails/lspkind-nvim' -- vscode-like pictograms
-  use 'dcampos/nvim-snippy'
-  ---- UI
-  use 'glepnir/lspsaga.nvim'
-  use "folke/trouble.nvim"
-  ---- Typescript
-  use "jose-elias-alvarez/typescript.nvim"
-  ---- Go
-  use 'mattn/vim-goimports'
-  ---- F#
-  use { 'ionide/Ionide-vim' }
-  ---- Dart&Flutter
-  use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
-  -- Completion
-  use 'Shougo/ddc.vim'
-  use 'Shougo/pum.vim'
-  use 'Shougo/ddc-ui-pum'
-  use 'matsui54/denops-popup-preview.vim'
-  use 'matsui54/denops-signature_help'
-  use 'tani/ddc-fuzzy'
-  use 'Shougo/ddc-source-nvim-lsp'
-  use 'matsui54/ddc-buffer'
-  use 'LumaKernel/ddc-source-file'
-  use 'totto2727/ddc-snippy'
   -- Filer
   use 'nvim-lua/plenary.nvim' -- Common utilities
-  use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'camgraff/telescope-tmux.nvim'
-  use 'nvim-telescope/telescope-ghq.nvim'
-  use "gbprod/yanky.nvim"
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Tool
   use 'monaqa/dial.nvim'
   use 'tpope/vim-surround'

@@ -48,6 +48,7 @@ vim.opt.inccommand = 'split'
 
 vim.opt.scrolloff = 40
 vim.opt.path:append { '**' }
-vim.opt.wildignore:append { '*/node_modules/*', '.git' }
+vim.opt.wildignore:append { '.git' }
 
 vim.opt.formatoptions:append { 'ro' }
+

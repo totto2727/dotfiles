@@ -27,24 +27,24 @@ telescope.setup {
       hidden = true,
       initial_mode = 'insert'
     },
-    live_grep = {
-      initial_mode = 'insert'
-    },
     keymaps = {
       initial_mode = 'insert'
     },
     current_buffer_fuzzy_find = {
       initial_mode = 'insert'
     },
+    live_grep = {
+      initial_mode = 'insert'
+    }
   },
   extensions = {
     file_browser = {
       path = "%:p:h",
       cwd = telescope_buffer_dir(),
-      respect_gitignore = false,
+      respect_gitignore = true,
       hidden = true,
-      hide_parent_dir = true,
       grouped = true,
+      hide_parent_dir = true,
       hijack_netrw = true,
       mappings = {
         ["i"] = {},
@@ -66,23 +66,14 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 telescope.load_extension('fzf')
-telescope.load_extension('ghq')
 
-vim.keymap.set('n', '<Space>ff', builtin.find_files)
-vim.keymap.set('n', '<Space>fg', builtin.live_grep)
+vim.keymap.set('n', '<Space>fd', builtin.find_files)
+vim.keymap.set('n', '<Space>rg', builtin.live_grep)
 vim.keymap.set('n', '<Space>b', builtin.buffers)
-vim.keymap.set('n', '<Space>r', builtin.lsp_references)
-vim.keymap.set('n', '<Space>d', builtin.lsp_definitions)
-vim.keymap.set('n', '<Space>t', builtin.lsp_type_definitions)
-vim.keymap.set('n', '<Space>i', builtin.lsp_implementations)
 vim.keymap.set('n', '<Space>gs', builtin.git_status)
 vim.keymap.set('n', '<Space>gc', builtin.git_commits)
 vim.keymap.set('n', '<Space>gbc', builtin.git_bcommits)
 vim.keymap.set('n', '<Space>gb', builtin.git_branches)
-vim.keymap.set('n', '<Space>fb', builtin.current_buffer_fuzzy_find)
-vim.keymap.set('n', '<Space>ghq', ":Telescope ghq list<Enter>")
-vim.keymap.set('n', '<Space>s', ":Telescope tmux sessions<Enter>")
-vim.keymap.set('n', '<Space>w', ":Telescope tmux windows<Enter>")
-vim.keymap.set('n', '<Space>p', ":Telescope tmux pane_contents<Enter>")
+vim.keymap.set('n', '<Space>cb', builtin.current_buffer_fuzzy_find)
 vim.keymap.set('n', '<Space>k', ":Telescope keymaps<Enter>")
 vim.keymap.set("n", "<Space>e", telescope.extensions.file_browser.file_browser)

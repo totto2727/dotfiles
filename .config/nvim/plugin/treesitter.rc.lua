@@ -25,27 +25,7 @@ ts.setup {
     },
     autotag = {
         enable = true,
-    },
-    ensure_installed = {
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "json",
-        "jsonc",
-        "toml",
-        "yaml",
-        "bash",
-        "vim",
-        "lua",
-        "rust",
-        "dart",
-        "go",
-        "swift",
-        "kotlin",
-        "java"
-    },
+    }
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
