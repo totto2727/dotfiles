@@ -30,12 +30,9 @@ exist helix && make_link ~/dotfiles/.config/helix ~/.config/helix
 ### gitui
 exist gitui && mkdir -p ~/.config/gitui
 exist gitui && make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
-#
+
 ### Bat
 exist bat && make_link ~/dotfiles/.config/bat ~/.config/bat
-
-### Karabiner
-make_link ~/dotfiles/.config/karabiner ~/.config/karabiner
 
 ## ファイル
 ### zsh
@@ -45,14 +42,6 @@ exist zsh && make_link ~/dotfiles/.zshenv ~/.zshenv
 
 make_link ~/dotfiles/.inputrc ~/.inputrc
 
-### asdf
-exist asdf && make_link ~/dotfiles/.tool-versions ~/.tool-versions
-
-### textlint
-# make_link ~/dotfiles/.textlintrc ~/.textlintrc
-
-### Tmux
-exist tmux && make_link ~/dotfiles/.tmux.conf ~/.tmux.conf
-
 ### Starship
 exist starship && make_link ~/dotfiles/.config/starship.toml ~/.config/starship.toml
+

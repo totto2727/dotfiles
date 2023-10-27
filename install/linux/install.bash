@@ -5,8 +5,6 @@ test -d ansible_playbooks || git clone git@github.com:totto2727/ansible_playbook
 sudo apt install fd-find ripgrep bat exa zoxide expect xclip xsel zsh
 bash ~/dotfiles/install/linux/install-rust.bash && source ~/.cargo/env && cargo install starship gitui git-delta sd bottom tree-sitter-cli starship
 
-bash ~/dotfiles/install/linux/install-asdf.bash && source ~/.asdf/asdf.sh && bash ~/dotfiles/update/asdf/update.bash
-
 bash ~/dotfiles/install/install.bash
 
 bash ~/dotfiles/install/linux/install-nvim.bash
