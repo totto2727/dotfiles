@@ -106,4 +106,6 @@ if exist volta; then
   alias vpm="volta run npm"
 fi
 
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+# bun completions
+[ -s "/Users/h_tsuchida/.bun/_bun" ] && source "/Users/h_tsuchida/.bun/_bun"
+
