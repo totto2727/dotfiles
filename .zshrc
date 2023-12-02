@@ -91,7 +91,7 @@ if exist git; then
   alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
 fi
 
-if exists gh; then
+if exist gh; then
   alias gh-pr-create="gh pr create -a '@me'"
 fi
 
