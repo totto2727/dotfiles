@@ -1,6 +1,8 @@
 #!/bin/zsh
 
-unsetopt GLOBAL_RCS
+if [ $(uname) = "Darwin" ]; then
+  unsetopt GLOBAL_RCS
+fi
 
 SHELL=$(which zsh)
 export SHELL
@@ -13,12 +15,10 @@ fi
 PATH="$HOME/.local/bin:$PATH"
 
 # homebrew
-PATH="/opt/homebrew/bin:$PATH"
-PATH="/opt/homebrew/sbin:$PATH"
-
-# asdf
-which brew >/dev/null 3>&1 && test -d "$HOME"/.asdf && . $(brew --prefix asdf)/libexec/asdf.sh
-test -e "$HOME"/.asdf/asdf.sh && . "$HOME/.asdf/asdf.sh"
+if [ -d /opt/homebrew/bin ]; then
+  PATH="/opt/homebrew/bin:$PATH"
+  PATH="/opt/homebrew/sbin:$PATH"
+fi
 
 # go
 if type go > /dev/null; then
@@ -31,20 +31,28 @@ if type go > /dev/null; then
 fi
 
 # volta
-VOLTA_HOME="$HOME/.volta"
-PATH="$VOLTA_HOME/bin:$PATH"
-export VOLTA_HOME
-export PATH
-export VOLTA_FEATURE_PNPM=1
+if [ -d "$HOME/.volta" ]; then
+  VOLTA_HOME="$HOME/.volta"
+  PATH="$VOLTA_HOME/bin:$PATH"
+  export VOLTA_HOME
+  export PATH
+  export VOLTA_FEATURE_PNPM=1
+fi
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+if [ -d "$HOME/.bun" ]; then
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
 
 # cargo
-test -e "$HOME"/.cargo/env && . "$HOME/.cargo/env"
+if [ -e "$HOME/.cargo/env" ]; then
+. "$HOME/.cargo/env"
+fi
 
 # orbstack
-source ~/.orbstack/shell/init.zsh 3>/dev/null || :
+if [ -e "$HOME/.orbstack/shell/init.zsh" ]; then
+  source "$HOME/.orbstack/shell/init.zsh" 3>/dev/null || :
+fi
 
 export GPG_TTY=$(tty)

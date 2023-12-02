@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 test -e /etc/zshrc && . /etc/zshrc
-test -d "$HOME"/.asdf/completions && fpath=("$HOME"/.asdf/completions $fpath)
 
 COLORTERM=truecolor
 export COLORTERM
@@ -26,8 +25,6 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^b" history-beginning-search-forward-end
 bindkey "^?" backward-delete-char
-
-export GPG_TTY=$TTY
 
 source ~/dotfiles/static/script/exist.bash || exit
 
@@ -72,6 +69,7 @@ fi
 exist gitui && alias gui="gitui"
 exist ghr && exist fzf && alias rep='ghr cd $(ghr list | fzf)'
 exist ghr && exist fzf && exist code && alias repc='ghr open $(ghr list | fzf) code'
+
 if exist git; then
   alias g="git"
   alias gs="git status"
@@ -93,6 +91,10 @@ if exist git; then
   alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
 fi
 
+if exists gh; then
+  alias gh-pr-create="gh pr create -a '@me'"
+fi
+
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 
@@ -107,5 +109,7 @@ if exist volta; then
 fi
 
 # bun completions
-[ -s "/Users/h_tsuchida/.bun/_bun" ] && source "/Users/h_tsuchida/.bun/_bun"
+if [ -s "/Users/h_tsuchida/.bun/_bun" ]; then
+  && source "/Users/h_tsuchida/.bun/_bun"
+fi
 
