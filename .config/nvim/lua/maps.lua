@@ -1,8 +1,3 @@
-vim.keymap.set('n', '<C-w>', function() vim.cmd [[ w ]] end)
-vim.keymap.set({ 'n', 'x' }, '<C-S-q>', function() vim.cmd [[ q ]] end)
-vim.keymap.set('n', '<C-S-w>', function() vim.cmd [[ wq ]] end)
-vim.keymap.set('t', '<C-S-q>', '<C-\\><C-n>:q<Enter>')
-
 vim.keymap.set('n', 'x', '"_x')
 vim.keymap.set('n', 'c', '"_c')
 
