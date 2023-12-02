@@ -26,6 +26,17 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^b" history-beginning-search-forward-end
 bindkey "^?" backward-delete-char
 
+if [ $(uname) = "Linux" ]; then
+  if [ -f ~/.ssh-agent ]; then
+    . ~/.ssh-agent
+  fi
+  if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
+    ssh-agent > ~/.ssh-agent
+    . ~/.ssh-agent
+  fi
+  ssh-add -l >& /dev/null || ssh-add
+fi
+
 source ~/dotfiles/static/script/exist.bash || exit
 
 exist starship && eval "$(starship init zsh)"
@@ -110,6 +121,6 @@ fi
 
 # bun completions
 if [ -s "/Users/h_tsuchida/.bun/_bun" ]; then
-  && source "/Users/h_tsuchida/.bun/_bun"
+  source "/Users/h_tsuchida/.bun/_bun"
 fi
 
