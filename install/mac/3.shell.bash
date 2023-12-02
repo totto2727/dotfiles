@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo -e "\n""change default shell"
+
 source ~/dotfiles/static/script/exist.bash
 exist brew || (echo brew is not installed && exit 1)
 

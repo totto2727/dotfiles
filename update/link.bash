@@ -1,47 +1,60 @@
 #!/bin/bash
 
-if [[ "$os" == "Mac" ]]; then
+if [[ $(uname) = "Darwin" ]]; then
+  echo -e "\n""mac link"
 	chmod -R go-w "$(brew --prefix)"/share
 	test -e ~/iCloud || echo ln -s ~/Library/"Mobile Documents"/"com~apple~CloudDocs" ~/iCloud
 fi
-
-mkdir -p ~/.config
 
 source ~/dotfiles/static/script/make_link.bash
 source ~/dotfiles/static/script/exist.bash
 
 # シンボリックリンクの生成と設定
 ## ディレクトリ
-### git_config
-test -d ~/git_config && make_link ~/git_config ~/.config/git
+
+echo -e "\n""mkdir ~/.config"
+mkdir -p ~/.config
 
 ### git_config
-mkdir -p ~/.ssh
-test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/config ~/.config/config
-test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.git ~/.config/.git
-test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.gitignore ~/.config/.gitignore
+if [[ $(uname) = "Darwin" ]]; then
+  echo -e "\n""Git config link"
+  test -d ~/git_config && make_link ~/git_config ~/.config/git
+fi
+
+### git_config
+if [[ $(uname) = "Darwin" ]]; then
+  echo -e "\n""SSH config link"
+  mkdir -p ~/.ssh
+  test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/config ~/.config/config
+  test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.git ~/.config/.git
+  test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.gitignore ~/.config/.gitignore
+fi
 
 ### nvim
+echo -e "\n""neovim config link"
 exist nvim && make_link ~/dotfiles/.config/nvim ~/.config/nvim
 
 ### helix
+echo -e "\n""helix config link"
 exist helix && make_link ~/dotfiles/.config/helix ~/.config/helix
 
-### gitui
-exist gitui && mkdir -p ~/.config/gitui
-exist gitui && make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
-
 ### Bat
+echo -e "\n""bat config link"
 exist bat && make_link ~/dotfiles/.config/bat ~/.config/bat
 
 ## ファイル
+### gitui
+echo -e "\n""gitui config link"
+exist gitui && mkdir -p ~/.config/gitui
+exist gitui && make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
+#
 ### zsh
+echo -e "\n""zsh config link"
 exist zsh && make_link ~/dotfiles/.zshrc ~/.zshrc
 exist zsh && make_link ~/dotfiles/.zprofile ~/.zprofile
 exist zsh && make_link ~/dotfiles/.zshenv ~/.zshenv
 
-make_link ~/dotfiles/.inputrc ~/.inputrc
-
 ### Starship
+echo -e "\n""starship config link"
 exist starship && make_link ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 

@@ -2,9 +2,10 @@
 
 source ~/dotfiles/static/script/exist.bash
 
+echo -e "\n""cargo install"
 exist cargo && cargo install cargo-update
 
-# exist go && go install 
-
-exist pip3 && pip3 install -r ~/dotfiles/static/package/requirements.txt
+echo -e "\n""pip install"
+exist pip && pip install pip-review
+exist pip && pip install -r ~/dotfiles/static/package/requirements.txt
 

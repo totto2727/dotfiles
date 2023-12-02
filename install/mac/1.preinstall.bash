@@ -2,6 +2,8 @@
 
 # 事前に鍵を生成してgithubに登録
 
+echo -e "\n""brew install"
+
 if type "brew" >/dev/null 2>&1; then
 	echo -e "\nbrew is installed" #コマンドが存在する時の処理
 
@@ -12,5 +14,6 @@ else
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+echo -e "\n""git clone"
 brew install git
 git clone git@github.com/totto2727-org/dotfiles ~/dotfiles
