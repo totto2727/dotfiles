@@ -16,19 +16,15 @@ echo -e "\n""mkdir ~/.config"
 mkdir -p ~/.config
 
 ### git_config
-if [[ $(uname) = "Darwin" ]]; then
-  echo -e "\n""Git config link"
-  test -d ~/git_config && make_link ~/git_config ~/.config/git
-fi
+echo -e "\n""Git config link"
+test -d ~/git_config && make_link ~/git_config ~/.config/git
 
 ### git_config
-if [[ $(uname) = "Darwin" ]]; then
-  echo -e "\n""SSH config link"
-  mkdir -p ~/.ssh
-  test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/config ~/.config/config
-  test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.git ~/.config/.git
-  test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.gitignore ~/.config/.gitignore
-fi
+echo -e "\n""SSH config link"
+mkdir -p ~/.ssh
+test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/config ~/.config/config
+test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.git ~/.config/.git
+test -d ~/ssh_config && make_link ~/dotfiles/ssh_config/.gitignore ~/.config/.gitignore
 
 ### nvim
 echo -e "\n""neovim config link"
@@ -41,6 +37,10 @@ exist helix && make_link ~/dotfiles/.config/helix ~/.config/helix
 ### Bat
 echo -e "\n""bat config link"
 exist bat && make_link ~/dotfiles/.config/bat ~/.config/bat
+
+### Alacritty
+echo -e "\n""alacritty config link"
+exist bat && make_link ~/dotfiles/.config/alacritty ~/.config/alacritty
 
 ## ファイル
 ### gitui

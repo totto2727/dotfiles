@@ -10,8 +10,7 @@ test -d ~/ssh_config || git clone git@github.com:totto2727/ssh_config.git ~/ssh_
 echo -e "\n""yay install"
 
 yay
-
-yay rustup fd ripgrep bat eza zoxide expect xclip xsel zsel neovim helix
+yay -S --needed - < ~/dotfiles/static/package/yay-endeavor-private.txt
 
 echo -e "\n""rust install"
 
