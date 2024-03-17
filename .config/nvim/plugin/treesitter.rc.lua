@@ -7,13 +7,13 @@ if not (ok1 and ok2) then return end
 ts.setup {
     additional_vim_regex_highlighting = false,
     highlight = {
-        enable = true,
+        enable = not vim.g.vscode,
     },
     indent = {
         enable = true,
     },
     rainbow = {
-        enable = true,
+        enable = not vim.g.vscode,
         disable = { "jsx" },
         query = {
             'rainbow-parens',

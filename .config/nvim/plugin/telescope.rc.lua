@@ -66,6 +66,7 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 telescope.load_extension('fzf')
+telescope.load_extension("lazygit")
 
 vim.keymap.set('n', '<Space>fd', builtin.find_files)
 vim.keymap.set('n', '<Space>rg', builtin.live_grep)
