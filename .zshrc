@@ -111,7 +111,7 @@ if exist git; then
   alias GSW="git switch"
   alias GSWC="git switch -c"
   alias GC="git commit"
-  alias GCA"git commit --amend"
+  alias GCA="git commit --amend"
   alias GPUSH="git push"
   alias GPUSHF="git push --force-with-lease --force-if-includes"
   alias GR="git rebase"
