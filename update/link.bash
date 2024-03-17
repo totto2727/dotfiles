@@ -2,8 +2,8 @@
 
 if [[ $(uname) = "Darwin" ]]; then
   echo -e "\n""mac link"
-	chmod -R go-w "$(brew --prefix)"/share
-	test -e ~/iCloud || echo ln -s ~/Library/"Mobile Documents"/"com~apple~CloudDocs" ~/iCloud
+  chmod -R go-w "$(brew --prefix)"/share
+  test -e ~/iCloud || echo ln -s ~/Library/"Mobile Documents"/"com~apple~CloudDocs" ~/iCloud
 fi
 
 source ~/dotfiles/static/script/make_link.bash
@@ -46,6 +46,12 @@ exist bat && make_link ~/dotfiles/.config/alacritty ~/.config/alacritty
 echo -e "\n""lazygit config link"
 exist bat && make_link ~/dotfiles/.config/lazygit ~/.config/lazygit
 
+### Pipewire
+if [[ $(uname) = "Linux" ]]; then
+  echo -e "\n""pipewire config link"
+  exist bat && make_link ~/dotfiles/.config/pipwwire ~/.config/pipewire
+fi
+
 ## ファイル
 ### chrome
 test -e ~/.local/bin/chrome || make_link ~/dotfiles/chrome ~/.local/bin/chrome
@@ -66,3 +72,14 @@ exist zsh && make_link ~/dotfiles/.zshenv ~/.zshenv
 echo -e "\n""starship config link"
 exist starship && make_link ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
+### SSH Agent
+if [[ $(uname) = "Linux" ]]; then
+  echo -e "\n""ssh-agent config link"
+  mkdir -p ~/.config/systemd/user/
+  make_link ~/dotfiles/.config/user/ssh-agent.service ~/.config/user/ssh-agent.service
+fi
+
+if [[ $(uname) = "Linux" ]]; then
+  systemctl --user daemon-reload
+  systemctl --user enable --now ssh-agent
+fi

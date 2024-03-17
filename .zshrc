@@ -40,19 +40,6 @@ bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 bindkey "^?" backward-delete-char
 
-# ssh-agentの設定（Linuxのみ）
-if [ $(uname) = "Linux" ]; then
-  if [ -f ~/.ssh-agent ]; then
-    . ~/.ssh-agent
-  fi
-  if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
-    ssh-agent > ~/.ssh-agent
-    . ~/.ssh-agent
-  fi
-  ssh-add -l >& /dev/null || ssh-add
-fi
-
-# ユーテリティ関数のロード
 source ~/dotfiles/static/script/exist.bash || exit
 
 # ロードが必要なコマンド
@@ -133,6 +120,10 @@ exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 
 # LinuxのSSH周り
+if [[ $(uname) = "Linux" ]]; then
+  export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi
+
 if exist keychain; then
   test -e $HOME/.ssh/id_ed25519 && keychain -q --nogui $HOME/.ssh/id_ed25519
   source $HOME/.keychain/$HOST-sh
