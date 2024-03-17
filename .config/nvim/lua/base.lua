@@ -34,6 +34,16 @@ autocmd BufReadPost *
       \ endif
 ]]
 
+-- terminalの設定
+vim.cmd [[
+autocmd TermOpen * startinsert
+command! -nargs=* T vsplit | wincmd l | resize 20 | terminal <args>
+]]
+
+-- Leader Key
+vim.cmd [[
+let mapleader = "\<Space>"
+]]
 -- Status Line&Command Line
 vim.opt.laststatus = 3
 vim.opt.showmode = false

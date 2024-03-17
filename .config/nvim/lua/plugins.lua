@@ -8,6 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 
 vim.g.loaded_matchparen = 1
 
+
 packer.startup(function(use)
   -- Package Manager
   use 'wbthomason/packer.nvim'
@@ -30,6 +31,7 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'kdheepak/lazygit.nvim'
   -- Tool
   use 'monaqa/dial.nvim'
   use 'tpope/vim-surround'

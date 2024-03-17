@@ -35,6 +35,8 @@ if ok then
 
   vim.cmd([[ colorscheme tokyonight ]])
 
+elseif vim.g.vscode then
+-- 何もしない
 else
   vim.cmd([[ colorscheme japanesque ]])
 end
