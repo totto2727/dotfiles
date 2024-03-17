@@ -45,6 +45,12 @@ if [ -d "$HOME/.bun" ]; then
   export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
+# deno
+if [ -d "$HOME/.deno" ]; then
+  export BUN_INSTALL="$HOME/.deno"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
 # cargo
 if [ -e "$HOME/.cargo/env" ]; then
 . "$HOME/.cargo/env"

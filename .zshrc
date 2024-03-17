@@ -1,31 +1,46 @@
 #!/bin/zsh
 
+# グローバルなzshrcのロード
 test -e /etc/zshrc && . /etc/zshrc
 
+# 色関係の設定
 COLORTERM=truecolor
 export COLORTERM
-
-autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
-bindkey -v
+# 補完の有効化
+autoload -Uz compinit && compinit
+
+# 入力はEmacsモード
+bindkey -e 
+
+# 基本的な設定
 setopt nonomatch
 setopt share_history
 setopt histignorealldups
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
-setopt correct
+
+# 誤りの自動訂正
+# 邪魔になることが多いので無効化
+# setopt correct
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# パターンを用いた履歴検索の有効
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
-autoload -Uz history-search-end
+
+# 上下キーでいい感じに入力補完してくれる
+# https://zenn.dev/naoki_oshiumi/articles/c7a9a727b3e784
+autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^b" history-beginning-search-forward-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 bindkey "^?" backward-delete-char
 
+# ssh-agentの設定（Linuxのみ）
 if [ $(uname) = "Linux" ]; then
   if [ -f ~/.ssh-agent ]; then
     . ~/.ssh-agent
@@ -37,27 +52,32 @@ if [ $(uname) = "Linux" ]; then
   ssh-add -l >& /dev/null || ssh-add
 fi
 
+# ユーテリティ関数のロード
 source ~/dotfiles/static/script/exist.bash || exit
 
+# ロードが必要なコマンド
 exist starship && eval "$(starship init zsh)"
 exist zoxide && eval "$(zoxide init zsh)"
 exist ghr && source <(ghr shell bash)
 exist ghr && source <(ghr shell bash --completion)
 
+# Vim関係のエイリアス
 if exist nvim; then
   EDITOR="$(which nvim)"
-  alias v="nvim"
-  alias vi="nvim"
-  alias vim="nvim"
+  alias VI="nvim"
+elif exist vim; then
+  EDITOR="$(which vim)"
+  alias VI="vim"
 else
   EDITOR="$(which vi)"
-  alias v="vi"
-  alias nvim="vi"
+  alias VI="vi"
 fi
 export EDITOR
 
-exist hx && alias h="hx"
+# Helixの有効化
+exist hx && alias HX="hx"
 
+# lsコマンドのエイリアス
 if exist exa; then
   alias l="exa --group-directories-first --icons --ignore-glob='.DS_Store'"
   alias ll="l -alg"
@@ -67,56 +87,55 @@ else
   alias ll="l -al"
   alias lt="tree"
 fi
+## 遷移時のディレクトリ内容表示
 chpwd() {
   l -a
 }
 
+# catコマンドのエイリアス
 if exist bat; then
-  alias b="bat"
+  alias C="bat"
 else
-  alias b="cat"
+  alias C="cat"
 fi
 
-exist gitui && alias gui="gitui"
-exist ghr && exist fzf && alias rep='ghr cd $(ghr list | fzf)'
-exist ghr && exist fzf && exist code && alias repc='ghr open $(ghr list | fzf) code'
+# Git CUIのエイリアス
+exist gitui && alias GUI="gitui"
+exist ghr && exist fzf && alias REP='ghr cd $(ghr list | fzf)'
+exist ghr && exist fzf && exist code && alias REPC='ghr open $(ghr list | fzf) code'
 
+# Gitのエイリアス
 if exist git; then
-  alias g="git"
-  alias gs="git status"
-  alias gb='git branch'
-  alias gch="git checkout"
-  alias gchb="git checkout -b"
-  alias gmain="git checkout main"
-  alias gmaster="git checkout master"
-  alias gstaging="git checkout staging"
-  alias gdevelopment="git checkout development"
-  alias gdev="git checkout dev"
-  alias gtotto="git checkout totto2727"
-  alias gc="git commit"
-  alias gca="git commit --amend"
-  alias gpush="git push"
-  alias gpushf="git push --force-with-lease --force-if-includes"
-  alias gpull="git pull"
-  alias gsync="git pull && git push"
-  alias git-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
+  alias GST="git status"
+  alias GB='git branch'
+  alias GSW="git switch"
+  alias GSWC="git switch -c"
+  alias GC="git commit"
+  alias GCA"git commit --amend"
+  alias GPUSH="git push"
+  alias GPUSHF="git push --force-with-lease --force-if-includes"
+  alias GR="git rebase"
+  alias GRI="git rebase -i"
+  alias GF="git fetch -p"
+  alias GP="git pull -p"
+  alias GSYNC="git pull && git push"
+  alias g-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
 fi
 
+# GitHub CLIのエイリアス
 if exist gh; then
   alias gh-pr-create="gh pr create -a '@me'"
+  alias gh-poi="gh poi"
 fi
 
+# コピー周り
 exist pbcopy && alias CLIPBOARD_COMMAND='pbcopy'
 exist xsel && alias CLIPBOARD_COMMAND='xsel --input --clipboard'
 
+# LinuxのSSH周り
 if exist keychain; then
   test -e $HOME/.ssh/id_ed25519 && keychain -q --nogui $HOME/.ssh/id_ed25519
   source $HOME/.keychain/$HOST-sh
-fi
-
-if exist volta; then
-  alias vode="volta run node"
-  alias vpm="volta run npm"
 fi
 
 # bun completions
@@ -124,3 +143,7 @@ if [ -s "/Users/h_tsuchida/.bun/_bun" ]; then
   source "/Users/h_tsuchida/.bun/_bun"
 fi
 
+# deno completions
+if [ -s "/Users/h_tsuchida/.bun/_bun" ]; then
+  eval "$(deno completions zsh)"
+fi
