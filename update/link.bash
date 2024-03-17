@@ -42,12 +42,20 @@ exist bat && make_link ~/dotfiles/.config/bat ~/.config/bat
 echo -e "\n""alacritty config link"
 exist bat && make_link ~/dotfiles/.config/alacritty ~/.config/alacritty
 
+### Lazygit
+echo -e "\n""lazygit config link"
+exist bat && make_link ~/dotfiles/.config/lazygit ~/.config/lazygit
+
 ## ファイル
+### chrome
+test -e ~/.local/bin/chrome || make_link ~/dotfiles/chrome ~/.local/bin/chrome
+
 ### gitui
 echo -e "\n""gitui config link"
 exist gitui && mkdir -p ~/.config/gitui
 exist gitui && make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
-#
+exist gitui && make_link ~/dotfiles/.config/gitui/theme.ron ~/.config/gitui/theme.ron
+
 ### zsh
 echo -e "\n""zsh config link"
 exist zsh && make_link ~/dotfiles/.zshrc ~/.zshrc

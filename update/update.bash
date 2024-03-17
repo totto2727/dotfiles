@@ -2,6 +2,12 @@
 
 source ~/dotfiles/static/script/exist.bash
 
+echo -e "\n""deno update"
+exist deno && deno upgrade
+
+echo -e "\n""bun update"
+exist bun && bun upgrade
+
 echo -e "\n""rust update"
 exist rustup && rustup update
 exist cargo && cargo install cargo-update

@@ -4,10 +4,10 @@ curl https://raw.githubusercontent.com/aereal/vim-colors-japanesque/master/color
 
 if test -d ~/git_config; then
   echo -e "\n""git config theme"
-	curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_day.gitconfig >~/git_config/tokyonight_day.gitconfig
-	curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_moon.gitconfig >~/git_config/tokyonight_moon.gitconfig
-	curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_night.gitconfig >~/git_config/tokyonight_night.gitconfig
-	curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_storm.gitconfig >~/git_config/tokyonight_storm.gitconfig
+  curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_day.gitconfig >~/git_config/tokyonight_day.gitconfig
+  curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_moon.gitconfig >~/git_config/tokyonight_moon.gitconfig
+  curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_night.gitconfig >~/git_config/tokyonight_night.gitconfig
+  curl https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/delta/tokyonight_storm.gitconfig >~/git_config/tokyonight_storm.gitconfig
 fi
 
 echo -e "\n""bat theme"
