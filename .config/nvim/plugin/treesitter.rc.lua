@@ -1,8 +1,13 @@
+if vim.g.vscode then 
+  vim.treesitter.stop()
+  return 
+end
+
 local ok1, ts = pcall(require, "nvim-treesitter.configs")
 local ok2, autotag = pcall(require, "nvim-ts-autotag")
 local ok3, autopairs = pcall(require, "nvim-autopairs")
+local ok4, rainbow_delimiters = pcall(require, "rainbow-delimiters")
 if not (ok1 and ok2) then return end
-
 
 ts.setup {
     additional_vim_regex_highlighting = false,
@@ -11,29 +16,14 @@ ts.setup {
     },
     indent = {
         enable = true,
-    },
-    rainbow = {
-        enable = not vim.g.vscode,
-        disable = { "jsx" },
-        query = {
-            'rainbow-parens',
-        },
-        strategy = {
-            require 'ts-rainbow.strategy.global',
-        },
-        max_file_lines = 500,
-    },
-    autotag = {
-        enable = true,
     }
 }
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-
 if ok3 then
   autotag.setup({})
+end
 
+if ok3 then
   local Rule = require 'nvim-autopairs.rule'
   local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
 
@@ -69,3 +59,31 @@ if ok3 then
     }
   end
 end
+
+if ok4 then
+  ---@type rainbow_delimiters.config
+  vim.g.rainbow_delimiters = {
+      strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          vim = rainbow_delimiters.strategy['local'],
+      },
+      query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+      },
+      priority = {
+          [''] = 110,
+          lua = 210,
+      },
+      highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+      },
+  }
+end
+

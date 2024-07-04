@@ -21,7 +21,7 @@ packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   ---- Treesitter
   use 'nvim-treesitter/nvim-treesitter'
-  use 'HiPhish/nvim-ts-rainbow2'
+  use 'HiPhish/rainbow-delimiters.nvim'
   use "windwp/nvim-autopairs"
   use 'windwp/nvim-ts-autotag'
   use 'numToStr/Comment.nvim'

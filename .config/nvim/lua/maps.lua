@@ -40,8 +40,8 @@ vim.keymap.set('n', '<M-j>', '<C-w>j')
 vim.keymap.set('n', '<M-l>', '<C-w>l')
 
 -- ESC
-vim.keymap.set('t', 'ff', '<c-\\><c-n>')
-vim.keymap.set('i', 'ff', '<ESC>')
+vim.keymap.set('t', 'gf', '<c-\\><c-n>')
+vim.keymap.set('i', 'gf', '<ESC>')
 
 -- terminal
 vim.keymap.set('n', '<Leader>t', ':T<Cr>')

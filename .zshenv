@@ -20,35 +20,9 @@ if [ -d /opt/homebrew/bin ]; then
   PATH="/opt/homebrew/sbin:$PATH"
 fi
 
-# go
-if type go > /dev/null; then
-  GOPATH="$(go env GOPATH)"
-  GOBIN="${GOPATH}/bin"
-  PATH="${GOBIN}:${PATH}"
-  export GOPATH
-  export GOBIN
-  export PATH
-fi
-
-# volta
-if [ -d "$HOME/.volta" ]; then
-  VOLTA_HOME="$HOME/.volta"
-  PATH="$VOLTA_HOME/bin:$PATH"
-  export VOLTA_HOME
-  export PATH
-  export VOLTA_FEATURE_PNPM=1
-fi
-
-# bun
-if [ -d "$HOME/.bun" ]; then
-  export BUN_INSTALL="$HOME/.bun"
-  export PATH="$BUN_INSTALL/bin:$PATH"
-fi
-
-# deno
-if [ -d "$HOME/.deno" ]; then
-  export BUN_INSTALL="$HOME/.deno"
-  export PATH="$BUN_INSTALL/bin:$PATH"
+# mise
+if type mise > /dev/null; then
+  eval "$(mise activate zsh)"
 fi
 
 # cargo
@@ -59,6 +33,12 @@ fi
 # orbstack
 if [ -e "$HOME/.orbstack/shell/init.zsh" ]; then
   source "$HOME/.orbstack/shell/init.zsh" 3>/dev/null || :
+fi
+
+# postgres utils
+if [ -d "/opt/homebrew/opt/libpq/bin" ]; then
+  PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+  export PATH
 fi
 
 export GPG_TTY=$(tty)

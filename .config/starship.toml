@@ -1,33 +1,32 @@
-[username]
-disabled = true
-style_user = "white bold"
-style_root = "red bold"
-format = "[$user]($style):"
-show_always = true
-
-[hostname]
-ssh_symbol = ""
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [directory]
-# home_symbol = "~"
-# truncation_length = 100
-# truncation_symbol = "…/"
-# truncate_to_repo = false
-# repo_root_style = "purple bold"
-# use_logical_path = false
+style = "blue"
 
-[shell]
-disabled = false
-fish_indicator = "F"
-bash_indicator = "B"
-zsh_indicator = "Z"
-unknown_indicator = "?"
-style = "cyan bold"
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
-[package]
-disabled = true
+[git_branch]
+format = "[$branch]($style) "
+style = "bright-black"
 
-[time]
-disabled = false
-format = " [$time]($style) "
-time_format = "%R"
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+

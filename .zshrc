@@ -48,6 +48,9 @@ exist zoxide && eval "$(zoxide init zsh)"
 exist ghr && source <(ghr shell bash)
 exist ghr && source <(ghr shell bash --completion)
 
+# PATHの表示
+alias path-list='echo "$PATH" | sd ":" "\n"'
+
 # Vim関係のエイリアス
 if exist nvim; then
   EDITOR="$(which nvim)"
@@ -107,6 +110,7 @@ if exist git; then
   alias GP="git pull -p"
   alias GSYNC="git pull && git push"
   alias g-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
+  alias g-pr-commit-log='(){git log --no-merges --pretty=format:"- **%s**%n" $1..$(git rev-parse --abbrev-ref @) | tac | sd "\n\n" "\n"}'
 fi
 
 # GitHub CLIのエイリアス
@@ -135,6 +139,6 @@ if [ -s "/Users/h_tsuchida/.bun/_bun" ]; then
 fi
 
 # deno completions
-if [ -s "/Users/h_tsuchida/.bun/_bun" ]; then
+if [ -s "/Users/h_tsuchida/.deno/_deno" ]; then
   eval "$(deno completions zsh)"
 fi
