@@ -1,0 +1,12 @@
+[settings]
+experimental = true
+
+[tools]
+node = "latest"
+deno = "latest"
+bun = "latest"
+"npm:@antfu/ni" = "latest"
+"npm:npm-run-all2" = "latest"
+dprint = "latest"
+go = "latest"
+"go:github.com/air-verse/air" = "latest"

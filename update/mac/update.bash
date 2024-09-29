@@ -3,7 +3,6 @@
 source ~/dotfiles/static/script/exist.bash
 
 echo -e "\n""brew update"
-brew bundle --file=~/dotfiles/static/package/Brewfile.brew
 brew update
 brew upgrade
 

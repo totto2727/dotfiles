@@ -2,23 +2,8 @@
 
 source ~/dotfiles/static/script/exist.bash
 
-echo -e "\n""deno update"
-exist deno && deno upgrade
-
-echo -e "\n""bun update"
-exist bun && bun upgrade
-
-echo -e "\n""rust update"
-exist rustup && rustup update
-exist cargo && cargo install cargo-update
-exist cargo && cargo install-update --all
-
-echo -e "\n""pip update"
-exist pip && pip install -r ~/dotfiles/static/package/requirements.txt
-exist pip && pip install pip-review
-exist pip && pip install --upgrade pip
-exist pip && pip-review --auto
-exist pip && pip list --format=freeze > ~/dotfiles/static/package/requirements.txt
+echo -e "\n""mise update"
+exist mise && mise install && mise upgrade
 
 echo -e "\n""link update"
 test -e ~/dotfiles/update/link.bash && bash ~/dotfiles/update/link.bash

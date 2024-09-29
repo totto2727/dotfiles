@@ -46,23 +46,21 @@ exist bat && make_link ~/dotfiles/.config/alacritty ~/.config/alacritty
 echo -e "\n""lazygit config link"
 exist bat && make_link ~/dotfiles/.config/lazygit ~/.config/lazygit
 
-### Pipewire
-if [[ $(uname) = "Linux" ]]; then
-  echo -e "\n""pipewire config link"
-  exist bat && make_link ~/dotfiles/.config/pipwwire ~/.config/pipewire
+if [[ $(uname) = "Darwin" ]]; then
+  USERNAME=$(whoami)
+  FILEPATH="/Users/$USERNAME/Library/Application Support/lazygit/config.yml"
+  uname test -e $FILEPATH && chown $USERNAME FILWPATH
 fi
+
+### mise
+echo -e "\n""mise config link"
+exist bat && make_link ~/dotfiles/.config/mise ~/.config/mise
 
 ## ファイル
 ### chrome
 test -e ~/.local/bin/chrome || make_link ~/dotfiles/chrome ~/.local/bin/chrome
 
-### gitui
-echo -e "\n""gitui config link"
-exist gitui && mkdir -p ~/.config/gitui
-exist gitui && make_link ~/dotfiles/.config/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
-exist gitui && make_link ~/dotfiles/.config/gitui/theme.ron ~/.config/gitui/theme.ron
-
-### zsh
+## zsh
 echo -e "\n""zsh config link"
 exist zsh && make_link ~/dotfiles/.zshrc ~/.zshrc
 exist zsh && make_link ~/dotfiles/.zprofile ~/.zprofile
@@ -72,14 +70,3 @@ exist zsh && make_link ~/dotfiles/.zshenv ~/.zshenv
 echo -e "\n""starship config link"
 exist starship && make_link ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
-### SSH Agent
-if [[ $(uname) = "Linux" ]]; then
-  echo -e "\n""ssh-agent config link"
-  mkdir -p ~/.config/systemd/user/
-  make_link ~/dotfiles/.config/user/ssh-agent.service ~/.config/user/ssh-agent.service
-fi
-
-if [[ $(uname) = "Linux" ]]; then
-  systemctl --user daemon-reload
-  systemctl --user enable --now ssh-agent
-fi

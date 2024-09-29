@@ -68,8 +68,8 @@ export EDITOR
 exist hx && alias HX="hx"
 
 # lsコマンドのエイリアス
-if exist exa; then
-  alias l="exa --group-directories-first --icons --ignore-glob='.DS_Store'"
+if exist eza; then
+  alias l="eza --group-directories-first --icons --ignore-glob='.DS_Store'"
   alias ll="l -alg"
   alias lt="l -T"
 else
