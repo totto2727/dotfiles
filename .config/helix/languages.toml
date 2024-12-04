@@ -1,99 +1,26 @@
 [[language]]
-name = "html"
-formatter = { command = 'prettier', args = ["--parser", "html"] }
+name = "go"
+scope = "source.go"
+injection-regex = "go"
+file-types = ["go"]
+roots = ["go.work", "go.mod"]
 auto-format = true
-
-[[language]]
-name = "json"
-formatter = { command = 'prettier', args = ["--parser", "json"] }
-auto-format = true
-
-[[language]]
-name = "yaml"
-formatter = { command = 'prettier', args = ["--parser", "yaml"] }
-auto-format = true
-
-[[language]]
-name = "markdown"
-formatter = { command = 'prettier', args = ["--parser", "markdown"] }
-auto-format = true
-
-[[language]]
-name = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-auto-format = true
+# comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls", "golangci-lint-lsp" ]
+# TODO: gopls needs utf-8 offsets?
+indent = { tab-width = 4, unit = "\t" }
 
 [[language]]
 name = "typescript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-auto-format = true
+roots = ["deno.json", "deno.jsonc", "package.json"]
+language-servers = ["typescript-language-server", "deno-lsp"]
 
-[[language]]
-name = "tsx"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-auto-format = true
+[language-server.typescript-language-server]
+required-root-patterns = ["package.json"]
 
-[[language]]
-name = "rust"
-scope = "source.rust"
-injection-regex = "rust"
-file-types = ["rs"]
-roots = ["Cargo.toml", "Cargo.lock"]
-auto-format = true
-comment-token = "//"
-language-server = { command = "/home/totto2727/.rustup/toolchains/stable-aarch64-unknown-linux-gnu/bin/rust-analyzer" }
-indent = { tab-width = 4, unit = "    " }
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
-
-[language.debugger]
-name = "lldb-vscode"
-transport = "stdio"
-command = "lldb-vscode"
-
-[[language.debugger.templates]]
-name = "binary"
-request = "launch"
-completion = [ { name = "binary", completion = "filename" } ]
-args = { program = "{0}" }
-
-[[language.debugger.templates]]
-name = "binary (terminal)"
-request = "launch"
-completion = [ { name = "binary", completion = "filename" } ]
-args = { program = "{0}", runInTerminal = true }
-
-[[language.debugger.templates]]
-name = "attach"
-request = "attach"
-completion = [ "pid" ]
-args = { pid = "{0}" }
-
-[[language.debugger.templates]]
-name = "gdbserver attach"
-request = "attach"
-completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ]
-args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] }
-
-[[grammar]]
-name = "rust"
-source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "0431a2c60828731f27491ee9fdefe25e250ce9c9" }
-
-[[language]]
-name = "toml"
-scope = "source.toml"
-injection-regex = "toml"
-file-types = ["toml"]
-roots = []
-comment-token = "#"
-language-server = { command = "taplo", args = ["lsp", "stdio"] }
-indent = { tab-width = 2, unit = "  " }
-
-[[grammar]]
-name = "toml"
-source = { git = "https://github.com/ikatyang/tree-sitter-toml", rev = "7cff70bbcbbc62001b465603ca1ea88edd668704" }
+[language-server.deno-lsp]
+command = "deno"
+args = ["lsp"]
+config = { deno = { enable = true } }
+required-root-patterns = ["deno.*"]

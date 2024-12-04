@@ -110,13 +110,16 @@ if exist git; then
   alias GP="git pull -p"
   alias GSYNC="git pull && git push"
   alias g-branch-sync="git fetch -p && git branch --merged | grep -v '*'| sed -e '/main/d' -e '/master/d' -e '/prod/d' -e '/production/d' -e '/staging/d' -e '/stg/d' -e '/develop/d' -e '/dev/d' -e '/remote/d' | xargs git branch -d"
-  alias g-pr-commit-log='(){git log --no-merges --pretty=format:"- **%s**%n" $1..$(git rev-parse --abbrev-ref @) | tac | sd "\n\n" "\n"}'
+  alias g-diff-commit-log='(){git log --no-merges --pretty=format:"- **%s**%n" $1..$(git rev-parse --abbrev-ref @) | tac | sd "\n\n" "\n"}'
+  alias g-pr-commit-log='(){git log --no-merges --pretty=format:"- **%s**%n" $(g-base-branch)..$(git rev-parse --abbrev-ref @) | tac | sd "\n\n" "\n"}'
+  alias g-base-branch='git show-branch | grep '\'*\'' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'\''[]~^\[]'\'' '\''{print $2}'\'
 fi
 
 # GitHub CLIのエイリアス
 if exist gh; then
-  alias gh-pr-create="gh pr create -a '@me'"
+  alias gh-pr-create='gh pr create --base "$(g-base-branch)" -a "@me"'
   alias gh-poi="gh poi"
+  alias gh-auth-ghcr="gh auth token | docker login ghcr.io -u totto2727 --password-stdin"
 fi
 
 # コピー周り
