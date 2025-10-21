@@ -117,7 +117,7 @@ fi
 
 # GitHub CLIのエイリアス
 if exist gh; then
-  alias gh-pr-create='gh pr create --base "$(g-base-branch)" -a "@me"'
+  alias gh-pr-create='gh pr create -a "@me"'
   alias gh-poi="gh poi"
   alias gh-auth-ghcr="gh auth token | docker login ghcr.io -u totto2727 --password-stdin"
 fi
@@ -145,3 +145,5 @@ fi
 if [ -s "/Users/h_tsuchida/.deno/_deno" ]; then
   eval "$(deno completions zsh)"
 fi
+
+source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script

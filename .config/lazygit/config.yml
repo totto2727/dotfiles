@@ -55,9 +55,12 @@ gui:
   animateExplosion: true # shows an explosion animation when nuking the working tree
   portraitMode: 'auto' # one of 'auto' | 'never' | 'always'
 git:
+  # paging:
+  #   colorArg: always
+  #   useConfig: false
   paging:
     colorArg: always
-    useConfig: false
+    pager: delta --dark --paging=never
   commit:
     signOff: false
     autoWrapCommitMessage: true # automatic WYSIWYG wrapping of the commit message as you type
